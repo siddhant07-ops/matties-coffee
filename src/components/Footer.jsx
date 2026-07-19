@@ -3,7 +3,7 @@ import { FaInstagram, FaFacebook , FaTwitter, FaLinkedin } from "react-icons/fa"
 
 function Footer(){
     return(
-        <section className="px-10 py-10 bg-amber-50">
+        <section id="contact" className=" scroll-smooth px-10 py-10 bg-amber-50">
             <div className="flex flex-col- justify-between items-center gap-16 bg-amber-200 rounded-3xl shadow-lg p-10 hover:scale-100 hover:-translate-y-px hover:shadow-amber-700 transition-all duration-300">
                 {/*Coloumn-1*/}
                     <img 
@@ -28,25 +28,14 @@ function Footer(){
                     <h1 className="text-xl font-semibold">
                         Quick Links
                     </h1>
-                      <ul className="space-y-2">
 
-                      <li className="hover:text-amber-700 font-bold cursor-pointer transition">
-                      🏡Home
-                      </li>
+                    <a href="#home">Home</a>
 
-                      <li className="hover:text-amber-700 font-bold `cursor-pointer transition">
-                      📔Menu
-                      </li>
+                    <a href="#menu">Menu</a>
 
-                      <li className="hover:text-amber-700 font-bold cursor-pointer transition">
-                      🪟Gallery
-                      </li>
+                    <a href="#gallery">Gallery</a>
 
-                      <li className="hover:text-amber-700 font-bold cursor-pointer transition">
-                      📞Contact
-                      </li>
-
-                      </ul>
+                    <a href="#contact">Contact</a>               
 
                 </div>
 

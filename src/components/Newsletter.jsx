@@ -1,4 +1,6 @@
-function Newsletter(){
+import { useState } from "react";
+function Newsletter(){ 
+    const [email, setEmail] = useState("");
     return(
 
     <section className="px-10 py-20 bg-amber-50">
@@ -29,11 +31,23 @@ function Newsletter(){
                 <input 
                 type="email"
                 placeholder="Enter your email..."
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="w-96 px-6 py-4 rounded-full border-2 border-orange-600 outline-none"
                 />
-                <button className="px-8 py-4 bg-red-500 hover:scale-110 transition-all duration-500 hover:bg-amber-950 text-white rounded-full ">
-                    Subscribe
-                </button>
+<button
+onClick={() => {
+if(email===""){
+alert("Please Enter Your Email");
+}
+else{
+alert("Subscribed Successfully!");
+setEmail("");
+}
+}}
+>
+Subscribe
+</button>
             </div>
 
 

@@ -14,7 +14,7 @@ function Gallery (){
            gallery6,
         ];
         return(
-     <section className="px-10 py-40 bg-amber-50">
+     <section id="gallery" className="px-10 py-40 bg-amber-50">
         <h1 className="text-2xl text-amber-500 font-extrabold text-center">
             OUR GALLERY
         </h1>
