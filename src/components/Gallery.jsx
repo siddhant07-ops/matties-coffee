@@ -24,20 +24,19 @@ function Gallery (){
         </h1>
 
         {/*Grid Container*/}
-        <div className="grid grid-cols-3 gap-6">
-
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {
 
                 galleryImages.map((image, index) => (
 
                     <div
                      key={index}
-                     className="rounded-3xl mt-4  overflow-hidden shadow-orange-300 hover:scale-105 transition duration-300"
+                     className="group overflow-hidden rounded-4xl border border-amber-100 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 bg-white"
                    >
                      <img
                        src={image}
                        alt="Coffee"
-                       className="w-full h-64 object-cover"
+                       className="w-full h-64 object-contain rounded-4xl"
                      />
                    </div>
                 

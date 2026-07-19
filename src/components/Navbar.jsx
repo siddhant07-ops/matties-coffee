@@ -1,62 +1,153 @@
 import mattie from "../assets/mattie.jpg";
+import { useState } from "react";
+import { FaBars, FaTimes } from "react-icons/fa";
 
 function Navbar() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
-    <nav className="flex justify-between items-center bg-yellow-100 px-8 py-3">
+    <nav className="bg-amber-50 shadow-md px-6 md:px-10 py-4">
 
-      {/* Logo */}
-      <div className="flex items-center gap-4">
-        <img
-          src={mattie}
-          alt="Mattie's Coffee Logo"
-          className="w-20 h-20 rounded-full shadow-md"
-        />
+      {/* Top Navbar */}
+      <div className="flex items-center justify-between">
 
-        <h1 className="text-4xl font-bold text-amber-700 cursor-pointer">
-          Mattie's Coffee
-        </h1>
+        {/* Logo */}
+        <div className="flex items-center gap-4">
+          <img
+            src={mattie}
+            alt="Mattie's Coffee Logo"
+            className="w-16 h-16 rounded-full shadow-md"
+          />
+
+          <h1 className="text-2xl md:text-3xl font-bold text-amber-700">
+            Mattie's Coffee
+          </h1>
+        </div>
+
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex items-center gap-8 font-semibold">
+
+          <a href="#home" className="hover:text-amber-700">
+            Home
+          </a>
+
+          <a href="#menu" className="hover:text-amber-700">
+            Menu
+          </a>
+
+          <a href="#store" className="hover:text-amber-700">
+            Our Store
+          </a>
+
+          <a href="#shop" className="hover:text-amber-700">
+            Shop
+          </a>
+
+          <a href="#contact" className="hover:text-amber-700">
+            Contact
+          </a>
+
+        </div>
+
+        {/* Desktop Buttons */}
+        <div className="hidden md:flex gap-3">
+
+          <button className="bg-amber-700 text-white px-5 py-2 rounded-full hover:bg-amber-600 transition">
+            Order Now
+          </button>
+
+          <button className="border border-amber-700 text-amber-700 px-5 py-2 rounded-full hover:bg-amber-700 hover:text-white transition">
+            Dine In
+          </button>
+
+          <button className="border border-amber-700 text-amber-700 px-5 py-2 rounded-full hover:bg-amber-700 hover:text-white transition">
+            Take Away
+          </button>
+
+        </div>
+
+        {/* Hamburger */}
+        <button
+          className="md:hidden text-3xl text-amber-700"
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          {menuOpen ? <FaTimes /> : <FaBars />}
+        </button>
+
       </div>
 
-      {/* Navigation Links */}
-      <div className="flex gap-8 font-bold text-lg">
+      {/* Mobile Menu */}
+      <div
+        className={`md:hidden overflow-hidden transition-all duration-500 ease-in-out ${
+          menuOpen
+            ? "max-h-[600px] opacity-100 mt-4"
+            : "max-h-0 opacity-0"
+        }`}
+      >
+        <div className="bg-amber-100 rounded-2xl shadow-lg p-6 flex flex-col items-center gap-5">
 
-        <p className="cursor-pointer hover:text-amber-700 transition duration-300">
-          Home
-        </p>
+          <a
+            href="#home"
+            onClick={() => setMenuOpen(false)}
+            className="font-semibold hover:text-amber-700"
+          >
+            Home
+          </a>
 
-        <p className="cursor-pointer hover:text-amber-700 transition duration-300">
-          Menu
-        </p>
+          <a
+            href="#menu"
+            onClick={() => setMenuOpen(false)}
+            className="font-semibold hover:text-amber-700"
+          >
+            Menu
+          </a>
 
-        <p className="cursor-pointer hover:text-amber-700 transition duration-300">
-          Our Store
-        </p>
+          <a
+            href="#store"
+            onClick={() => setMenuOpen(false)}
+            className="font-semibold hover:text-amber-700"
+          >
+            Our Store
+          </a>
 
-        <p className="cursor-pointer hover:text-amber-700 transition duration-300">
-          Shop
-        </p>
+          <a
+            href="#shop"
+            onClick={() => setMenuOpen(false)}
+            className="font-semibold hover:text-amber-700"
+          >
+            Shop
+          </a>
 
-        <p className="cursor-pointer hover:text-amber-700 transition duration-300">
-          Contact
-        </p>
+          <a
+            href="#contact"
+            onClick={() => setMenuOpen(false)}
+            className="font-semibold hover:text-amber-700"
+          >
+            Contact
+          </a>
 
-      </div>
+          <button
+            className="w-full bg-amber-700 text-white py-3 rounded-full hover:bg-amber-600 transition"
+            onClick={() => setMenuOpen(false)}
+          >
+            Order Now
+          </button>
 
-      {/* Buttons */}
-      <div className="flex gap-3">
+          <button
+            className="w-full border border-amber-700 text-amber-700 py-3 rounded-full hover:bg-amber-700 hover:text-white transition"
+            onClick={() => setMenuOpen(false)}
+          >
+            Dine In
+          </button>
 
-        <button className="bg-amber-700 text-white px-5 py-2 rounded-full hover:bg-amber-400 transition duration-300 cursor-pointer">
-          Order Now
-        </button>
+          <button
+            className="w-full border border-amber-700 text-amber-700 py-3 rounded-full hover:bg-amber-700 hover:text-white transition"
+            onClick={() => setMenuOpen(false)}
+          >
+            Take Away
+          </button>
 
-        <button className="bg-white border border-amber-700 text-amber-700 px-5 py-2 rounded-full hover:bg-amber-700 hover:text-white transition duration-300 cursor-pointer">
-          Dine In
-        </button>
-
-        <button className="bg-white border border-amber-700 text-amber-700 px-5 py-2 rounded-full hover:bg-amber-700 hover:text-white transition duration-300 cursor-pointer">
-          Take Away
-        </button>
-
+        </div>
       </div>
 
     </nav>
