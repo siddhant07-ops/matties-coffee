@@ -1,4 +1,4 @@
-import { FaArrowUp } from "react-icons/fa";
+import { FaArrowDown, FaArrowUp } from "react-icons/fa";
 
 function BackToTop(){
 
@@ -19,6 +19,8 @@ className="fixed bottom-5 text-center right-5 bg-amber-700 text-white p-4 rounde
 <FaArrowUp/>
 
 </button>
+
+
 
 );
 

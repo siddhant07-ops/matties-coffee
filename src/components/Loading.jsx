@@ -1,21 +1,24 @@
-function Loading(){
+function Loading() {
+  return (
+    <div className="fixed inset-0 bg-amber-50 flex flex-col justify-center items-center z-50">
 
-return(
+      {/* Coffee Icon */}
+      <div className="text-7xl animate-bounce">
+        ☕
+      </div>
 
-<div className="fixed inset-0 bg-amber-50 flex flex-col justify-center items-center z-50">
+      {/* Logo */}
+      <h1 className="text-5xl font-extrabold text-amber-700 mt-6">
+        Mattie's Coffee
+      </h1>
 
-<h1 className="text-5xl font-bold text-amber-700">
-Mattie's Coffee
-</h1>
+      {/* Subtitle */}
+      <p className="text-xl text-gray-700 mt-4">
+        Brewing Happiness...
+      </p>
 
-<p className="text-3xl mt-5">
-☕ Brewing Happiness...
-</p>
-
-</div>
-
-);
-
+    </div>
+  );
 }
 
 export default Loading;

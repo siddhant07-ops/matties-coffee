@@ -29,6 +29,7 @@ function Footer(){
                         Quick Links
                     </h1>
 
+                <div className="flex flex-col gap-2 mt-3">
                     <a href="#home">Home</a>
 
                     <a href="#menu">Menu</a>
@@ -36,6 +37,7 @@ function Footer(){
                     <a href="#gallery">Gallery</a>
 
                     <a href="#contact">Contact</a>               
+                </div>
 
                 </div>
 

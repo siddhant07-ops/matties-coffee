@@ -2,7 +2,7 @@ import latte from "../assets/latte.jpg";
 
 function Hero() {
   return (
-    <section id="home">
+    <section id="home" className="px-10 py-10">
 
       {/* Main Hero Container */}
       <div className="flex items-center justify-between gap-16">
