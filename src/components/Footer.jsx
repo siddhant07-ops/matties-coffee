@@ -35,7 +35,7 @@ function Footer(){
                       </li>
 
                       <li className="hover:text-amber-700 font-bold `cursor-pointer transition">
-                      📔Menu.
+                      📔Menu
                       </li>
 
                       <li className="hover:text-amber-700 font-bold cursor-pointer transition">
