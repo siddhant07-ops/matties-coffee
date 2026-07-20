@@ -38,22 +38,24 @@ function Newsletter() {
       </p>
 
       {/* Input & Button */}
-      <div className="flex flex-col sm:flex-row gap-4 items-center justify-center">
-        <input
-          type="email"
-          placeholder="Enter Your Email..."
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="w-full sm:flex-1 px-6 py-4 rounded-full border border-amber-700"
-        />
 
-        <button
-          onClick={handleSubscribe}
-          className="w-full sm:w-auto px-8 py-4 rounded-full bg-amber-700 text-white"
-        >
-          Subscribe
-        </button>
-      </div>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8 max-w-4xl mx-auto">
+              <input
+              type="email"
+              placeholder="Enter Your Email..."
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full sm:w-[500px] md:w-[650px] px-6 py-4 rounded-full border-2 border-amber-700 outline-none focus:ring-2 focus:ring-amber-500"
+                         />
+
+              <button
+                type="button"
+                onClick={handleSubscribe}
+                className="w-full sm:w-auto px-8 py-4 rounded-full bg-amber-700 text-white hover:bg-amber-800 active:scale-95 transition-all duration-300"
+              >
+                Subscribe
+              </button>
+            </div>
     </div>
 
       {/* Success / Error Message */}

@@ -5,7 +5,7 @@ function Hero() {
     <section id="home" className="px-10 py-10">
 
       {/* Main Hero Container */}
-      <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-10 ">
+      <div className="flex flex-wrap gap-5 mt-8 justify-between ">
 
         {/* Left Side */}
         <div className="flex-1">
@@ -34,14 +34,15 @@ function Hero() {
           </p>
 
           {/* Buttons */}
-   <button
+          <div className="flex flex-col sm:flex-row gap-4">
+<button
   type="button"
   onClick={() =>
-    document
-      .getElementById("menu")
-      ?.scrollIntoView({ behavior: "smooth" })
+    document.getElementById("menu")?.scrollIntoView({
+      behavior: "smooth",
+    })
   }
-  className="bg-amber-700 text-white w-full mb-4 max-w-xs px-6 py-3 rounded-3xl shadow-xl hover:scale-105 hover:bg-amber-400 active:scale-95 transition duration-300"
+  className="bg-amber-700 text-white w-52 py-3 rounded-full shadow-lg hover:bg-amber-800 hover:scale-105 active:scale-95 transition-all duration-300"
 >
   Order Now
 </button>
@@ -49,20 +50,15 @@ function Hero() {
 <button
   type="button"
   onClick={() =>
-    document
-      .getElementById("menu")
-      ?.scrollIntoView({ behavior: "smooth" })
+    document.getElementById("menu")?.scrollIntoView({
+      behavior: "smooth",
+    })
   }
-  className="border border-amber-700 text-amber-700 w-full max-w-xs px-6 py-3 rounded-3xl hover:scale-105 hover:bg-amber-700 hover:text-white active:scale-95 transition duration-300"
+  className="border-2 border-amber-700 text-amber-700 w-52 py-3 rounded-full hover:bg-amber-700 hover:text-white hover:scale-105 active:scale-95 transition-all duration-300"
 >
   View Menu
 </button>
-<button
-  onClick={() => alert("Working!")}
-  className="bg-red-600 text-white px-8 py-4 rounded-full active:scale-95"
->
-  Test Button
-</button>
+</div>
 
         </div>
 

@@ -1,20 +1,20 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
+import BestSellers from "./components/BestSellers";
 import WhyChooseUs from "./components/WhyChooseUs";
 import Testimonials from "./components/Testimonials";
 import SpecialOffer from "./components/SpecialOffer";
 import Gallery from "./components/Gallery";
-import BestSellers from "./components/BestSellers"; 
 import Newsletter from "./components/Newsletter";
 import Footer from "./components/Footer";
-
 import Loading from "./components/Loading";
 import BackToTop from "./components/BackToTop";
 
 function App() {
   const [loading, setLoading] = useState(true);
+  const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -29,19 +29,28 @@ function App() {
   }
 
   return (
-    <>
-      <Navbar />
+    <div
+      className={
+        darkMode
+          ? "min-h-screen bg-gray-950 text-white transition-colors duration-500"
+          : "min-h-screen bg-white text-black transition-colors duration-500"
+      }
+    >
+      <Navbar
+        darkMode={darkMode}
+        setDarkMode={setDarkMode}
+      />
+
       <Hero />
+      <BestSellers />
       <WhyChooseUs />
       <Testimonials />
       <SpecialOffer />
       <Gallery />
-      <BestSellers />
       <Newsletter />
       <Footer />
-
-      /* <BackToTop /> 
-    </>
+      <BackToTop />
+    </div>
   );
 }
 

@@ -14,7 +14,7 @@ function BestSellers() {
       </h2>
 
       {/* Main Heading */}
-      <h1 className="text-4xl md:text-5xl font-extrabold text-center mt-2">
+      <h1 className="text-4xl md:text-5xl mb-6 font-extrabold text-center mt-2">
         Our Most Loved Coffee
       </h1>
 

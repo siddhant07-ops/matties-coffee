@@ -1,155 +1,227 @@
 import mattie from "../assets/mattie.jpg";
 import { useState } from "react";
-import { FaBars, FaTimes } from "react-icons/fa";
+import {
+  FaBars,
+  FaTimes,
+  FaMoon,
+  FaSun,
+} from "react-icons/fa";
 
-function Navbar() {
+function Navbar({ darkMode, setDarkMode }) {
   const [menuOpen, setMenuOpen] = useState(false);
 
+  const scrollToSection = (id) => {
+    document.getElementById(id)?.scrollIntoView({
+      behavior: "smooth",
+    });
+
+    setMenuOpen(false);
+  };
+
   return (
-    <nav className="bg-amber-50 shadow-md px-6 md:px-10 py-4">
-
+    <nav
+      className={`sticky top-0 z-50 px-4 py-4 shadow-md backdrop-blur-md transition-colors duration-500 md:px-6 xl:px-10 ${
+        darkMode
+          ? "bg-gray-900/90 text-white"
+          : "bg-amber-50/90 text-black"
+      }`}
+    >
       {/* Top Navbar */}
-      <div className="flex items-center justify-between">
-
+      <div className="flex items-center justify-between gap-4">
         {/* Logo */}
-        <div className="flex items-center gap-4">
+        <button
+          type="button"
+          onClick={() => scrollToSection("home")}
+          className="flex shrink-0 items-center gap-3"
+        >
           <img
             src={mattie}
             alt="Mattie's Coffee Logo"
-            className="w-16 h-16 rounded-full shadow-md"
+            className="h-14 w-14 rounded-full shadow-md sm:h-16 sm:w-16"
           />
 
-          <h1 className="text-2xl md:text-3xl font-bold text-amber-700">
+          <h1 className="whitespace-nowrap text-xl font-bold text-amber-700 sm:text-2xl xl:text-3xl">
             Mattie's Coffee
           </h1>
-        </div>
+        </button>
 
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-8 font-semibold">
-
-          <a href="#home" className="hover:text-amber-700">
+        {/* Large Desktop Navigation */}
+        <div className="hidden items-center gap-5 font-semibold xl:flex">
+          <button
+            type="button"
+            onClick={() => scrollToSection("home")}
+            className="whitespace-nowrap transition hover:text-amber-700"
+          >
             Home
-          </a>
+          </button>
 
-          <a href="#menu" className="hover:text-amber-700">
+          <button
+            type="button"
+            onClick={() => scrollToSection("menu")}
+            className="whitespace-nowrap transition hover:text-amber-700"
+          >
             Menu
-          </a>
+          </button>
 
-          <a href="#store" className="hover:text-amber-700">
+          <button
+            type="button"
+            onClick={() => scrollToSection("store")}
+            className="whitespace-nowrap transition hover:text-amber-700"
+          >
             Our Store
-          </a>
+          </button>
 
-          <a href="#shop" className="hover:text-amber-700">
+          <button
+            type="button"
+            onClick={() => scrollToSection("shop")}
+            className="whitespace-nowrap transition hover:text-amber-700"
+          >
             Shop
-          </a>
+          </button>
 
-          <a href="#contact" className="hover:text-amber-700">
+          <button
+            type="button"
+            onClick={() => scrollToSection("contact")}
+            className="whitespace-nowrap transition hover:text-amber-700"
+          >
             Contact
-          </a>
-
+          </button>
         </div>
 
-        {/* Desktop Buttons */}
-        <div className="hidden md:flex gap-3">
+        {/* Large Desktop Controls */}
+        <div className="hidden shrink-0 items-center gap-2 xl:flex">
+          <button
+            type="button"
+            onClick={() => setDarkMode(!darkMode)}
+            aria-label="Toggle dark mode"
+            className="rounded-full border border-amber-700 p-3 text-amber-700 transition-all duration-300 hover:bg-amber-700 hover:text-white active:scale-95"
+          >
+            {darkMode ? <FaSun /> : <FaMoon />}
+          </button>
 
-          <button className="bg-amber-700 text-white px-5 py-2 rounded-full hover:bg-amber-600 transition">
+          <button
+            type="button"
+            onClick={() => scrollToSection("menu")}
+            className="whitespace-nowrap rounded-full bg-amber-700 px-4 py-2 text-white transition-all duration-300 hover:bg-amber-600 active:scale-95"
+          >
             Order Now
           </button>
 
-          <button className="border border-amber-700 text-amber-700 px-5 py-2 rounded-full hover:bg-amber-700 hover:text-white transition">
+          <button
+            type="button"
+            className="whitespace-nowrap rounded-full border border-amber-700 px-4 py-2 text-amber-700 transition-all duration-300 hover:bg-amber-700 hover:text-white active:scale-95"
+          >
             Dine In
           </button>
 
-          <button className="border border-amber-700 text-amber-700 px-5 py-2 rounded-full hover:bg-amber-700 hover:text-white transition">
+          <button
+            type="button"
+            className="whitespace-nowrap rounded-full border border-amber-700 px-4 py-2 text-amber-700 transition-all duration-300 hover:bg-amber-700 hover:text-white active:scale-95"
+          >
             Take Away
           </button>
-
         </div>
 
-        {/* Hamburger */}
-        <button
-          className="md:hidden text-3xl text-amber-700"
-          onClick={() => setMenuOpen(!menuOpen)}
-        >
-          {menuOpen ? <FaTimes /> : <FaBars />}
-        </button>
+        {/* Tablet and Mobile Controls */}
+        <div className="flex shrink-0 items-center gap-3 xl:hidden">
+          <button
+            type="button"
+            onClick={() => setDarkMode(!darkMode)}
+            aria-label="Toggle dark mode"
+            className="rounded-full border border-amber-700 p-3 text-amber-700 transition-all duration-300 hover:bg-amber-700 hover:text-white active:scale-95"
+          >
+            {darkMode ? <FaSun /> : <FaMoon />}
+          </button>
 
+          <button
+            type="button"
+            aria-label="Toggle navigation menu"
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="text-3xl text-amber-700"
+          >
+            {menuOpen ? <FaTimes /> : <FaBars />}
+          </button>
+        </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Tablet and Mobile Menu */}
       <div
-        className={`md:hidden overflow-hidden transition-all duration-500 ease-in-out ${
+        className={`overflow-hidden transition-all duration-500 ease-in-out xl:hidden ${
           menuOpen
-            ? "max-h-[600px] opacity-100 mt-4"
+            ? "mt-4 max-h-[750px] opacity-100"
             : "max-h-0 opacity-0"
         }`}
       >
-        <div className="bg-amber-100 rounded-2xl shadow-lg p-6 flex flex-col items-center gap-5">
-
-          <a
-            href="#home"
-            onClick={() => setMenuOpen(false)}
+        <div
+          className={`flex flex-col items-center gap-5 rounded-2xl p-6 shadow-lg ${
+            darkMode
+              ? "bg-gray-800 text-white"
+              : "bg-amber-100 text-black"
+          }`}
+        >
+          <button
+            type="button"
+            onClick={() => scrollToSection("home")}
             className="font-semibold hover:text-amber-700"
           >
             Home
-          </a>
+          </button>
 
-          <a
-            href="#menu"
-            onClick={() => setMenuOpen(false)}
+          <button
+            type="button"
+            onClick={() => scrollToSection("menu")}
             className="font-semibold hover:text-amber-700"
           >
             Menu
-          </a>
+          </button>
 
-          <a
-            href="#store"
-            onClick={() => setMenuOpen(false)}
+          <button
+            type="button"
+            onClick={() => scrollToSection("store")}
             className="font-semibold hover:text-amber-700"
           >
             Our Store
-          </a>
+          </button>
 
-          <a
-            href="#shop"
-            onClick={() => setMenuOpen(false)}
+          <button
+            type="button"
+            onClick={() => scrollToSection("shop")}
             className="font-semibold hover:text-amber-700"
           >
             Shop
-          </a>
+          </button>
 
-          <a
-            href="#contact"
-            onClick={() => setMenuOpen(false)}
+          <button
+            type="button"
+            onClick={() => scrollToSection("contact")}
             className="font-semibold hover:text-amber-700"
           >
             Contact
-          </a>
+          </button>
 
           <button
-            className="w-full bg-amber-700 text-white py-3 rounded-full hover:bg-amber-600 transition"
-            onClick={() => setMenuOpen(false)}
+            type="button"
+            onClick={() => scrollToSection("menu")}
+            className="w-full rounded-full bg-amber-700 py-3 text-white transition-all duration-300 hover:bg-amber-600 active:scale-95"
           >
             Order Now
           </button>
 
           <button
-            className="w-full border border-amber-700 text-amber-700 py-3 rounded-full hover:bg-amber-700 hover:text-white transition"
-            onClick={() => setMenuOpen(false)}
+            type="button"
+            className="w-full rounded-full border border-amber-700 py-3 text-amber-700 transition-all duration-300 hover:bg-amber-700 hover:text-white active:scale-95"
           >
             Dine In
           </button>
 
           <button
-            className="w-full border border-amber-700 text-amber-700 py-3 rounded-full hover:bg-amber-700 hover:text-white transition"
-            onClick={() => setMenuOpen(false)}
+            type="button"
+            className="w-full rounded-full border border-amber-700 py-3 text-amber-700 transition-all duration-300 hover:bg-amber-700 hover:text-white active:scale-95"
           >
             Take Away
           </button>
-
         </div>
       </div>
-
     </nav>
   );
 }
