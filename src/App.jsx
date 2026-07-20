@@ -40,7 +40,7 @@ function App() {
       <Newsletter />
       <Footer />
 
-      <BackToTop />
+      // <BackToTop />
     </>
   );
 }
