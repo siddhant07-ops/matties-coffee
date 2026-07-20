@@ -5,7 +5,8 @@ import { FaStar, FaRegStar } from "react-icons/fa";
 
 function BestSellers() {
   return (
-    <section className="px-6 md:px-12 py-16  bg-amber-50">
+    <section  id="menu"
+  className="px-6 md:px-10 py-20 bg-amber-50">
 
       {/* Title */}
       <h2 className="text-2xl md:text-2xl font-extrabold text-center text-amber-700">
@@ -18,7 +19,7 @@ function BestSellers() {
       </h1>
 
       {/* Cards Container */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
 
         {/* Card 1 */}
         <div className="bg-white rounded-3xl shadow-lg p-6 hover:scale-105 hover:shadow-2xl hover:shadow-amber-200 transition-all duration-300">
@@ -49,9 +50,13 @@ function BestSellers() {
             Price - ₹199
           </p>
 
-          <button className="w-full bg-amber-700 text-white py-3 rounded-full hover:bg-amber-800 transition-all duration-300">
-            Order Now
-          </button>
+<button
+  type="button"
+  onClick={() => alert("Your coffee has been added to the order! ☕")}
+  className="mt-5 w-full bg-amber-700 text-white py-3 rounded-full hover:bg-amber-800 active:scale-95 transition-all duration-300"
+>
+  Order Now
+</button>
 
         </div>
 
@@ -85,9 +90,13 @@ function BestSellers() {
             Price - ₹249
           </p>
 
-          <button className="w-full bg-amber-700 text-white py-3 rounded-full hover:bg-amber-800 transition-all duration-300">
-            Order Now
-          </button>
+<button
+  type="button"
+  onClick={() => alert("Your coffee has been added to the order! ☕")}
+  className="mt-5 w-full bg-amber-700 text-white py-3 rounded-full hover:bg-amber-800 active:scale-95 transition-all duration-300"
+>
+  Order Now
+</button>
 
         </div>
 
@@ -120,9 +129,13 @@ function BestSellers() {
                 Price - ₹299
             </p>
 
-            <button className="w-full bg-amber-700 text-white py-3 rounded-full hover:bg-amber-800 transition-all duration-300">
-                Order Now
-            </button>
+<button
+  type="button"
+  onClick={() => alert("Your coffee has been added to the order! ☕")}
+  className="mt-5 w-full bg-amber-700 text-white py-3 rounded-full hover:bg-amber-800 active:scale-95 transition-all duration-300"
+>
+  Order Now
+</button>
         
 
         </div>

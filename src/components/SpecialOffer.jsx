@@ -28,7 +28,13 @@ function SpecialOffer() {
           </p>
 
           {/* Button */}
-          <button className="w-fit px-8 py-3 hover:-translate-y-1 mt-4 bg-red-500 rounded-full text-2xl text-white font-bold hover:bg-orange-500 hover:scale-110 transition duration-500 shadow-orange-300 hover:shadow-xl">
+          <button 
+          onClick={() =>
+  document
+    .getElementById("menu")
+    ?.scrollIntoView({ behavior: "smooth" })
+}
+          className="w-fit px-8 py-3 hover:-translate-y-1 mt-4 bg-red-500 rounded-full text-2xl text-white font-bold hover:bg-orange-500 hover:scale-110 transition duration-500 shadow-orange-300 hover:shadow-xl">
             Grab Now
           </button>
 

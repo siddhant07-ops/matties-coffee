@@ -24,7 +24,7 @@ function Gallery (){
         </h1>
 
         {/*Grid Container*/}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="group overflow-hidden rounded-3xl border border-amber-100 shadow-lg hover:shadow-2xl hover:-translate-y-2 active:scale-95 transition-all duration-500 bg-white cursor-pointer">
             {
 
                 galleryImages.map((image, index) => (
@@ -36,7 +36,7 @@ function Gallery (){
                      <img
                        src={image}
                        alt="Coffee"
-                       className="w-full h-64 object-contain rounded-4xl"
+                       className="w-full h-64 object-contain rounded-3xl group-hover:scale-105 transition-transform duration-500"
                      />
                    </div>
                 

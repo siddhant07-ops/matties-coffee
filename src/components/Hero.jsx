@@ -34,23 +34,35 @@ function Hero() {
           </p>
 
           {/* Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4">
+   <button
+  type="button"
+  onClick={() =>
+    document
+      .getElementById("menu")
+      ?.scrollIntoView({ behavior: "smooth" })
+  }
+  className="bg-amber-700 text-white w-full mb-4 max-w-xs px-6 py-3 rounded-3xl shadow-xl hover:scale-105 hover:bg-amber-400 active:scale-95 transition duration-300"
+>
+  Order Now
+</button>
 
-            <button className="bg-amber-700 text-white w-full max-w-xs px-6 py-3 rounded-3xl shadow-xl hover:scale-105 hover:bg-amber-400 transition duration-300">
-              Order Now
-            </button>
-
-            <button className="border border-amber-700 text-amber-700 w-full max-w-xs px-6 py-3 rounded-3xl hover:scale-105 hover:bg-amber-700 hover:text-white transition duration-300">
-              View Menu
-            </button>
-            <button
-  onClick={() => alert("Button clicked")}
-  className="bg-red-500 text-white px-8 py-4 rounded-full"
+<button
+  type="button"
+  onClick={() =>
+    document
+      .getElementById("menu")
+      ?.scrollIntoView({ behavior: "smooth" })
+  }
+  className="border border-amber-700 text-amber-700 w-full max-w-xs px-6 py-3 rounded-3xl hover:scale-105 hover:bg-amber-700 hover:text-white active:scale-95 transition duration-300"
+>
+  View Menu
+</button>
+<button
+  onClick={() => alert("Working!")}
+  className="bg-red-600 text-white px-8 py-4 rounded-full active:scale-95"
 >
   Test Button
 </button>
-
-          </div>
 
         </div>
 
