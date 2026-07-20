@@ -27,14 +27,14 @@ function Navbar({ darkMode, setDarkMode }) {
       }`}
     >
       {/* Top Navbar */}
-      <div className="flex items-center justify-between gap-4">
+      <div className="flex items-center justify-between w-full gap-4">
         {/* Logo */}
         <button
           type="button"
           onClick={() => scrollToSection("home")}
           className="flex shrink-0 items-center gap-3"
         >
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3 flex-1 min-w-0">
           <img
             src={mattie}
             alt="Mattie's Coffee Logo"
@@ -126,7 +126,7 @@ function Navbar({ darkMode, setDarkMode }) {
         </div>
 
         {/* Tablet and Mobile Controls */}
-        <div className="flex shrink-0 items-center gap-3 xl:hidden">
+        <div className="flex items-center gap-2 flex-shrink-0">
           <button
             type="button"
             onClick={() => setDarkMode(!darkMode)}
