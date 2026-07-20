@@ -1,12 +1,11 @@
 import latte from "../assets/latte.jpg";
 
-function Hero() {
+function Hero({ darkMode }) {
   return (
     <section id="home" className="px-10 py-10">
 
       {/* Main Hero Container */}
-      <div className="flex flex-wrap gap-5 mt-8 justify-between ">
-
+<div className="flex flex-col-reverse md:flex-row items-center justify-between gap-10">
         {/* Left Side */}
         <div className="flex-1">
 
@@ -25,13 +24,17 @@ function Hero() {
           </h1>
 
           {/* Paragraph */}
-          <p className="text-gray-700 text-base md:text-xl leading-8 mb-8">
-            Enjoy handcrafted coffee made from the finest beans.
-            <br />
-            Every cup is brewed with love
-            <br />
-            and served fresh every day.
-          </p>
+           <p
+               className={`text-base md:text-xl leading-8 mb-8 transition-colors duration-500 ${
+    darkMode ? "text-white" : "text-gray-700"
+              }`}
+            >
+               Enjoy handcrafted coffee made from the finest beans.
+                <br />
+               Every cup is brewed with love
+                <br />
+                and served fresh every day.
+           </p>
 
           {/* Buttons */}
           <div className="flex flex-col sm:flex-row gap-4">
@@ -63,13 +66,29 @@ function Hero() {
         </div>
 
         {/* Right Side */}
-        <div className=" flex-1 flex items-center hover:scale-105 transition-all duration-500 hover:shadow-amber-700 justify-center">
-
-          <img
-            src={latte}
-            alt="Hot Latte"
-          className="w-full max-w-[400px] h-auto rounded-[40px] object-contain shadow-xl hover:shadow-amber-950 hover:scale-100 transition-all duration-500 cursor-pointer"           />
-        </div>
+<div className="w-full flex justify-center items-center mb-8 md:mb-0 md:flex-1">
+<img
+  src={latte}
+  alt="Hot Latte"
+  className="
+    w-[85%]
+    max-w-[320px]
+    sm:max-w-[360px]
+    md:max-w-[450px]
+    lg:max-w-[500px]
+    h-auto
+    rounded-[40px]
+    object-cover
+    shadow-xl
+    hover:shadow-2xl
+    hover:shadow-amber-900/40
+    hover:scale-105
+    transition-all
+    duration-500
+    cursor-pointer
+  "
+/>
+</div>
 
       </div>
 

@@ -34,19 +34,22 @@ function Navbar({ darkMode, setDarkMode }) {
           onClick={() => scrollToSection("home")}
           className="flex shrink-0 items-center gap-3"
         >
+          <div className="flex items-center gap-4">
           <img
             src={mattie}
             alt="Mattie's Coffee Logo"
-            className="h-14 w-14 rounded-full shadow-md sm:h-16 sm:w-16"
+            className="h-20 w-20 sm:h-16 sm:w-16 lg:h-20 lg:w-20 rounded-full shadow-lg"
           />
 
-          <h1 className="whitespace-nowrap text-xl font-bold text-amber-700 sm:text-2xl xl:text-3xl">
+          <h1 className="text-2xl sm:text-2xl lg:text-3xl font-bold text-amber-700 leading-none">
             Mattie's Coffee
           </h1>
+          </div>
         </button>
+        
 
         {/* Large Desktop Navigation */}
-        <div className="hidden items-center gap-5 font-semibold xl:flex">
+        <div className="hidden items-center p-4 gap-5 font-semibold xl:flex">
           <button
             type="button"
             onClick={() => scrollToSection("home")}
@@ -89,7 +92,7 @@ function Navbar({ darkMode, setDarkMode }) {
         </div>
 
         {/* Large Desktop Controls */}
-        <div className="hidden shrink-0 items-center gap-2 xl:flex">
+        <div className="hidden shrink-0 pl-3 items-center gap-2 xl:flex">
           <button
             type="button"
             onClick={() => setDarkMode(!darkMode)}

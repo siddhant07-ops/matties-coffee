@@ -41,7 +41,7 @@ function App() {
         setDarkMode={setDarkMode}
       />
 
-      <Hero />
+      <Hero darkMode={darkMode} />     
       <BestSellers />
       <WhyChooseUs />
       <Testimonials />
