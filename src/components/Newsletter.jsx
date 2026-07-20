@@ -18,8 +18,9 @@ function Newsletter() {
   };
 
   return (
-    <section className="px-10 py-10 justify-between items-center bg-amber-200 rounded-3xl shadow-lg  hover:scale-100 hover:-translate-y-px hover:shadow-amber-700 transition-all duration-300">
+    <section className="px-6 md:px-12 py-16 bg-amber-50">
       {/* Small Heading */}
+    <div className="bg-amber-100 rounded-3xl shadow-lg p-6 hover:scale-105 hover:shadow-amber-300 transition duration-500">
       <h3 className="text-center text-amber-700 rounded-3xl gap-16  font-extrabold text-3xl">
         NEWSLETTER📰
       </h3>
@@ -53,6 +54,7 @@ function Newsletter() {
           Subscribe
         </button>
       </div>
+    </div>
 
       {/* Success / Error Message */}
       {message && (

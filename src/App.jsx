@@ -6,6 +6,7 @@ import WhyChooseUs from "./components/WhyChooseUs";
 import Testimonials from "./components/Testimonials";
 import SpecialOffer from "./components/SpecialOffer";
 import Gallery from "./components/Gallery";
+import BestSellers from "./components/BestSellers"; 
 import Newsletter from "./components/Newsletter";
 import Footer from "./components/Footer";
 
@@ -35,6 +36,7 @@ function App() {
       <Testimonials />
       <SpecialOffer />
       <Gallery />
+      <BestSellers />
       <Newsletter />
       <Footer />
 

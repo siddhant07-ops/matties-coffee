@@ -1,29 +1,28 @@
 import { FaCoffee, FaMugHot, FaTruck, FaHeart } from "react-icons/fa";
 function WhyChooseUs() {
     return(
-<section className="px-10 py-20 bg-amber-50">
+<section className="px-6 md:px-12 py-16 bg-amber-50">
 
     {/*Small Heading*/}
-    <h1 className="text-center text-4xl mb-4 font-extrabold text-amber-700">
+    <h1 className="text-center text-2xl md:text-2xl font-serif text-amber-700">
         WHY CHOOSE US?
     </h1>
 
     {/*Big Heading */}
-    <h1 className="text-center font-extrabold text-4xl mb-12">
+    <h1 className="text-center text-3xl md:text-5xl font-extrabold mt-3 mb-12">
     Why People love Mattie's Coffee
     </h1>
 
     {/*Cards Container*/}
-    <div className=" grid grid-cols-4 gap-9">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
 
-        <div className="justify-center mb- bg-white rounded-3xl shadow-lg p-8 text-center hover:scale-110 hover:-translate-y-px hover:shadow-amber-700 transition-all duration-300">
-            <FaCoffee className="text-6xl text-amber-700 mx-auto" />
-
-        <div className="text-black font-bold">
+        <div className="bg-white rounded-3xl shadow-lg p-8 text-center hover:-translate-y-2 hover:shadow-2xl transition-all duration-300">
+        <FaCoffee className="text-5xl md:text-6xl text-amber-700 mx-auto mb-5" />
+        <div className="text-2xl font-bold mb-3">
             Premium Coffee Beans
         </div>
 
-        <p className="text-amber-700 mt-7">
+        <p className="text-amber-700 leading-relaxed">
             We carefully select the finest Arabica beans to ensure every cup delivers rich flavor, fresh aroma, and exceptional quality.
         </p>
 
@@ -32,14 +31,14 @@ function WhyChooseUs() {
         {/*Card-2*/}
         {/*Cards Container*/}
 
-        <div className="justify-center bg-white rounded-3xl shadow-lg p-8 text-center hover:scale-110 hover:-translate-y-px hover:shadow-amber-700 transition-all duration-300">
-            <FaMugHot className="text-6xl text-amber-700 mx-auto" />
+        <div className="bg-white rounded-3xl shadow-lg p-8 text-center hover:-translate-y-2 hover:shadow-2xl transition-all duration-300">
+            <FaMugHot className="text-5xl md:text-6xl text-amber-700 mx-auto mb-5" />
 
-        <div className="text-black font-bold mb-6">
+        <div className="text-2xl font-bold mb-3">
             Expert Baristas
         </div>
 
-        <p className="text-amber-700">
+        <p className="text-amber-700  leading-relaxed">
             We carefully select the finest Arabica beans to ensure every cup delivers rich flavor, fresh aroma, and exceptional quality.
         </p>
 
@@ -48,14 +47,14 @@ function WhyChooseUs() {
         {/*Card-3*/}
         {/*Cards Container*/}
 
-        <div className="justify-center bg-white rounded-3xl shadow-lg p-8 text-center hover:scale-110 hover:-translate-y-px hover:shadow-amber-700 transition-all duration-300">
-            <FaTruck className="text-6xl text-amber-700 mx-auto"/>
+        <div className="bg-white rounded-3xl shadow-lg p-8 text-center hover:-translate-y-2 hover:shadow-2xl transition-all duration-300">
+            <FaTruck className="text-5xl md:text-6xl text-amber-700 mx-auto mb-5"/>
 
-        <div className="text-black font-bold mb-6">
+        <div className="text-2xl font-bold mb-3">
             Fast Delivery
         </div>
 
-        <p className="text-amber-700">
+        <p className="text-amber-700  leading-relaxed">
             We carefully select the finest Arabica beans to ensure every cup delivers rich flavor, fresh aroma, and exceptional quality.
         </p>
 
@@ -63,14 +62,14 @@ function WhyChooseUs() {
 
         {/*Card-4*/}
 
-        <div className="bg-white rounded-3xl shadow-lg p-8 text-center hover:scale-110 hover:-translate-y-px hover:shadow-amber-700 transition-all duration-300">
-            <FaHeart className="text-6xl text-amber-700 mx-auto" />
+        <div className="bg-white rounded-3xl shadow-lg p-8 text-center hover:-translate-y-2 hover:shadow-2xl transition-all duration-300">
+            <FaHeart className="text-5xl md:text-6xl mb-5 text-amber-700 mx-auto mb-5a" />
 
-        <div className="text-black font-bold mb-6">
+        <div className="text-2xl font-bold mb-3">
            Made With Love
         </div>
 
-        <p className="text-amber-700">
+        <p className="text-amber-700 leading-relaxed">
             We carefully select the finest Arabica beans to ensure every cup delivers rich flavor, fresh aroma, and exceptional quality.
         </p>
         </div>

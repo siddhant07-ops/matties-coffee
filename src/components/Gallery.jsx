@@ -19,7 +19,7 @@ function Gallery (){
             OUR GALLERY
         </h1>
         {/*Big Heading*/}
-        <h1 className="font-extrabold text-3xl text-center text-red-950">
+        <h1 className="font-extrabold text-3xl mb-6 text-center text-red-950">
             Fresh Moments Captured📸
         </h1>
 

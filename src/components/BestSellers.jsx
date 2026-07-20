@@ -5,23 +5,23 @@ import { FaStar, FaRegStar } from "react-icons/fa";
 
 function BestSellers() {
   return (
-    <section className="px-10 py-20 bg-amber-50">
+    <section className="px-6 md:px-12 py-16  bg-amber-50">
 
       {/* Title */}
-      <h2 className="text-center text-3xl mb-4 font-extrabold text-amber-700">
+      <h2 className="text-2xl md:text-2xl font-extrabold text-center text-amber-700">
         OUR BEST SELLERS
       </h2>
 
       {/* Main Heading */}
-      <h1 className="text-center font-extrabold text-4xl mb-12">
+      <h1 className="text-4xl md:text-5xl font-extrabold text-center mt-2">
         Our Most Loved Coffee
       </h1>
 
       {/* Cards Container */}
-      <div className="grid grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
 
         {/* Card 1 */}
-        <div className="bg-white rounded-3xl shadow-lg p-6 hover:scale-115 transition duration-300">
+        <div className="bg-white rounded-3xl shadow-lg p-6 hover:scale-105 hover:shadow-2xl hover:shadow-amber-200 transition-all duration-300">
 
           <img
             src={espresso}
@@ -45,18 +45,18 @@ function BestSellers() {
                  <FaRegStar />
           </div>
 
-          <p className="font-extrabold mt-2">
+          <p className="font-extrabold mt-2 mb-3 text-xl">
             Price - ₹199
           </p>
 
-          <button className="mt-5 w-full bg-amber-700 text-white py-3 rounded-full hover:bg-amber-800 transition duration-300">
+          <button className="w-full bg-amber-700 text-white py-3 rounded-full hover:bg-amber-800 transition-all duration-300">
             Order Now
           </button>
 
         </div>
 
         {/* Card 2 */}
-        <div className="rounded-3xl shadow-lg p-6 hover:scale-120 transition duration-300">
+        <div className="rounded-3xl shadow-lg p-6 hover:scale-105 hover:shadow-2xl hover:shadow-amber-950 transition-all duration-300">
 
           <img
             src={cappuccino}
@@ -81,11 +81,11 @@ function BestSellers() {
         
           </div>
 
-          <p className="font-extrabold mt-2">
+          <p className="font-extrabold mt-2 mb-3 text-xl">
             Price - ₹249
           </p>
 
-          <button className="mt-5 w-full bg-amber-700 text-white py-3 rounded-full hover:bg-amber-800 transition duration-300">
+          <button className="w-full bg-amber-700 text-white py-3 rounded-full hover:bg-amber-800 transition-all duration-300">
             Order Now
           </button>
 
@@ -93,7 +93,7 @@ function BestSellers() {
 
         {/* Card 3*/}
 
-        <div className="bg-white rounded-3xl shadow-lg p-6 hover:scale-115 transition duration-300">
+        <div className="bg-white rounded-3xl shadow-lg p-6 hover:scale-105 hover:shadow-2xl hover:shadow-amber-200 transitio-all duration-300">
             <img
             src={caramel}
             alt="Caramel Latte"
@@ -116,11 +116,11 @@ function BestSellers() {
 
             </div>
 
-            <p className="font-extrabold mt-2 ">
+            <p className="font-extrabold mt-2 mb-3 text-xl">
                 Price - ₹299
             </p>
 
-            <button className="bg-amber-700 w-full rounded-full px-9 py-3 text-white mt-4">
+            <button className="w-full bg-amber-700 text-white py-3 rounded-full hover:bg-amber-800 transition-all duration-300">
                 Order Now
             </button>
         

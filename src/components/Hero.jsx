@@ -54,7 +54,7 @@ function Hero() {
           <img
             src={latte}
             alt="Hot Latte"
-className="w-full max-w-[550px] h-auto rounded-[40px] object-contain shadow-xl hover:shadow-amber-950 hover:scale-105 transition-all duration-500 cursor-pointer"           />
+          className="w-full max-w-[400px] h-auto rounded-[40px] object-contain shadow-xl hover:shadow-amber-950 hover:scale-100 transition-all duration-500 cursor-pointer"           />
         </div>
 
       </div>
