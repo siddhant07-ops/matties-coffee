@@ -43,6 +43,12 @@ function Hero() {
             <button className="border border-amber-700 text-amber-700 w-full max-w-xs px-6 py-3 rounded-3xl hover:scale-105 hover:bg-amber-700 hover:text-white transition duration-300">
               View Menu
             </button>
+            <button
+  onClick={() => alert("Button clicked")}
+  className="bg-red-500 text-white px-8 py-4 rounded-full"
+>
+  Test Button
+</button>
 
           </div>
 
