@@ -82,14 +82,14 @@ function Footer({ darkMode }) {
               </a>
 
               <a
-                href="nallasiddhantp@gmail.com"
+                href="https://mail.google.com/"
                 className={`flex items-center justify-center gap-3 transition hover:text-amber-600 md:justify-start ${
                   darkMode ? "text-gray-300" : "text-gray-700"
                 }`}
               >
                 <FaEnvelope className="text-amber-600" />
 
-                <span>nallasiddhantp@gmail.com</span>
+                <span>mattiescoffee@gmail.com</span>
               </a>
             </div>
           </div>
