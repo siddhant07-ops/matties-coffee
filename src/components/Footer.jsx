@@ -89,7 +89,7 @@ function Footer({ darkMode }) {
               >
                 <FaEnvelope className="text-amber-600" />
 
-                <span>mattiescoffee@gmail.com</span>
+                <span>nallasiddhantp@gmail.com</span>
               </a>
             </div>
           </div>
