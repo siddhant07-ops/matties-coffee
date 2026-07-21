@@ -1,6 +1,6 @@
 import espresso from "../assets/espresso.jpg";
 import cappuccino from "../assets/cappuccino.jpg";
-import latte from "../assets/caramel latte.jpg";
+import caramellatte from "../assets/caramel latte.jpg";
 
 function BestSellers({ darkMode }) {
   const coffees = [
@@ -17,9 +17,9 @@ function BestSellers({ darkMode }) {
       price: "₹249",
     },
     {
-      name: "Cafe Latte",
-      image: latte,
-      description: "A soft and creamy coffee for a relaxing moment.",
+      name: "Caramel Latte",
+      image: caramellatte,
+      description: "A soft and creamy latte with a sweet caramel flavour.",
       price: "₹279",
     },
   ];
@@ -30,30 +30,30 @@ function BestSellers({ darkMode }) {
       className={`px-6 py-20 transition-colors duration-500 md:px-12 lg:px-20 ${
         darkMode
           ? "bg-gray-900 text-white"
-          : "bg-amber-50 text-gray-900"
+          : "bg-white text-gray-900"
       }`}
     >
       <div className="mx-auto max-w-7xl">
         <div className="mb-12 text-center">
           <p
-            className={`mb-3 font-bold font-sans text-xl uppercase tracking-widest ${
+            className={`mb-3 font-semibold uppercase tracking-widest ${
               darkMode ? "text-amber-400" : "text-amber-700"
             }`}
           >
-            Customer favourites
+            Customer Favourites
           </p>
 
-          <h2 className="text-4xl font-extrabold  sm:text-4xl">
+          <h2 className="text-3xl font-bold sm:text-4xl">
             Our Best Sellers
           </h2>
 
           <p
-            className={`mx-auto mt-4 text-2xl max-w-2xl ${
+            className={`mx-auto mt-4 max-w-2xl ${
               darkMode ? "text-gray-300" : "text-gray-600"
             }`}
           >
             Discover some of the most loved coffee choices from
-            Mattie's Coffee.
+            Mattie&apos;s Coffee.
           </p>
         </div>
 
@@ -76,7 +76,7 @@ function BestSellers({ darkMode }) {
               <div className="p-6">
                 <div className="mb-3 flex items-center justify-between gap-4">
                   <h3 className="text-2xl font-bold">
-                   Caramel Latte
+                    {coffee.name}
                   </h3>
 
                   <span
