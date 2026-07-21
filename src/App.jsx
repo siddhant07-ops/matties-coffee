@@ -42,14 +42,14 @@ function App() {
       />
 
       <Hero darkMode={darkMode} />     
-      <BestSellers />
-      <WhyChooseUs />
-      <Testimonials />
-      <SpecialOffer />
-      <Gallery />
-      <Newsletter />
-      <Footer />
-      <BackToTop />
+      <BestSellers darkMode={darkMode}/>
+      <WhyChooseUs darkMode={darkMode}/>
+      <Testimonials darkMode={darkMode}/>
+      <SpecialOffer darkMode={darkMode}/>
+      <Gallery darkMode={darkMode}/>
+      <Newsletter darkMode={darkMode}/>
+      <Footer darkMode={darkMode}/>
+      <BackToTop darkMode={darkMode}/>
     </div>
   );
 }

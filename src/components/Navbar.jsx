@@ -1,11 +1,6 @@
 import mattie from "../assets/mattie.jpg";
 import { useState } from "react";
-import {
-  FaBars,
-  FaTimes,
-  FaMoon,
-  FaSun,
-} from "react-icons/fa";
+import { FaBars, FaTimes, FaMoon, FaSun } from "react-icons/fa";
 
 function Navbar({ darkMode, setDarkMode }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -27,29 +22,26 @@ function Navbar({ darkMode, setDarkMode }) {
       }`}
     >
       {/* Top Navbar */}
-      <div className="flex items-center justify-between w-full gap-4">
+      <div className="flex w-full items-center justify-between gap-4">
         {/* Logo */}
         <button
           type="button"
           onClick={() => scrollToSection("home")}
-          className="flex shrink-0 items-center gap-3"
+          className="flex min-w-0 shrink-0 items-center gap-3"
         >
-          <div className="flex items-center gap-3 flex-1 min-w-0">
           <img
             src={mattie}
             alt="Mattie's Coffee Logo"
-            className="h-20 w-20 sm:h-16 sm:w-16 lg:h-20 lg:w-20 rounded-full shadow-lg"
+            className="h-16 w-16 rounded-full shadow-lg sm:h-16 sm:w-16 lg:h-20 lg:w-20"
           />
 
-          <h1 className="text-2xl sm:text-2xl lg:text-3xl font-bold text-amber-700 leading-none">
+          <h1 className="whitespace-nowrap text-xl font-bold leading-none text-amber-700 sm:text-2xl lg:text-3xl">
             Mattie's Coffee
           </h1>
-          </div>
         </button>
-        
 
-        {/* Large Desktop Navigation */}
-        <div className="hidden items-center p-4 gap-5 font-semibold xl:flex">
+        {/* Laptop/Desktop Navigation */}
+        <div className="hidden items-center gap-5 p-4 text-center font-semibold xl:flex">
           <button
             type="button"
             onClick={() => scrollToSection("home")}
@@ -91,8 +83,9 @@ function Navbar({ darkMode, setDarkMode }) {
           </button>
         </div>
 
-        {/* Large Desktop Controls */}
-        <div className="hidden shrink-0 pl-3 items-center gap-2 xl:flex">
+        {/* Laptop/Desktop Controls */}
+        <div className="hidden shrink-0 items-center gap-2 pl-3 xl:flex">
+          {/* Desktop dark-mode button */}
           <button
             type="button"
             onClick={() => setDarkMode(!darkMode)}
@@ -110,23 +103,11 @@ function Navbar({ darkMode, setDarkMode }) {
             Order Now
           </button>
 
-          <button
-            type="button"
-            className="whitespace-nowrap rounded-full border border-amber-700 px-4 py-2 text-amber-700 transition-all duration-300 hover:bg-amber-700 hover:text-white active:scale-95"
-          >
-            Dine In
-          </button>
-
-          <button
-            type="button"
-            className="whitespace-nowrap rounded-full border border-amber-700 px-4 py-2 text-amber-700 transition-all duration-300 hover:bg-amber-700 hover:text-white active:scale-95"
-          >
-            Take Away
-          </button>
         </div>
 
-        {/* Tablet and Mobile Controls */}
-        <div className="flex items-center gap-2 flex-shrink-0">
+        {/* Phone and Tablet Controls */}
+        {/* xl:hidden hides these controls on laptop/desktop */}
+        <div className="flex shrink-0 items-center gap-2 xl:hidden">
           <button
             type="button"
             onClick={() => setDarkMode(!darkMode)}
@@ -140,14 +121,14 @@ function Navbar({ darkMode, setDarkMode }) {
             type="button"
             aria-label="Toggle navigation menu"
             onClick={() => setMenuOpen(!menuOpen)}
-            className="text-3xl text-amber-700"
+            className="text-3xl text-amber-700 transition active:scale-95"
           >
             {menuOpen ? <FaTimes /> : <FaBars />}
           </button>
         </div>
       </div>
 
-      {/* Tablet and Mobile Menu */}
+      {/* Phone and Tablet Menu */}
       <div
         className={`overflow-hidden transition-all duration-500 ease-in-out xl:hidden ${
           menuOpen
@@ -210,19 +191,6 @@ function Navbar({ darkMode, setDarkMode }) {
             Order Now
           </button>
 
-          <button
-            type="button"
-            className="w-full rounded-full border border-amber-700 py-3 text-amber-700 transition-all duration-300 hover:bg-amber-700 hover:text-white active:scale-95"
-          >
-            Dine In
-          </button>
-
-          <button
-            type="button"
-            className="w-full rounded-full border border-amber-700 py-3 text-amber-700 transition-all duration-300 hover:bg-amber-700 hover:text-white active:scale-95"
-          >
-            Take Away
-          </button>
         </div>
       </div>
     </nav>

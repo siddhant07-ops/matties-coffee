@@ -1,147 +1,112 @@
 import espresso from "../assets/espresso.jpg";
 import cappuccino from "../assets/cappuccino.jpg";
-import caramel from "../assets/caramel latte.jpg";
-import { FaStar, FaRegStar } from "react-icons/fa";
+import latte from "../assets/caramel latte.jpg";
 
-function BestSellers() {
+function BestSellers({ darkMode }) {
+  const coffees = [
+    {
+      name: "Espresso",
+      image: espresso,
+      description: "Strong, rich and full of bold coffee flavour.",
+      price: "₹199",
+    },
+    {
+      name: "Cappuccino",
+      image: cappuccino,
+      description: "Smooth espresso topped with creamy milk foam.",
+      price: "₹249",
+    },
+    {
+      name: "Cafe Latte",
+      image: latte,
+      description: "A soft and creamy coffee for a relaxing moment.",
+      price: "₹279",
+    },
+  ];
+
   return (
-    <section  id="menu"
-  className="px-6 md:px-10 py-20 bg-amber-50">
+    <section
+      id="menu"
+      className={`px-6 py-20 transition-colors duration-500 md:px-12 lg:px-20 ${
+        darkMode
+          ? "bg-gray-900 text-white"
+          : "bg-amber-50 text-gray-900"
+      }`}
+    >
+      <div className="mx-auto max-w-7xl">
+        <div className="mb-12 text-center">
+          <p
+            className={`mb-3 font-bold font-sans text-xl uppercase tracking-widest ${
+              darkMode ? "text-amber-400" : "text-amber-700"
+            }`}
+          >
+            Customer favourites
+          </p>
 
-      {/* Title */}
-      <h2 className="text-2xl md:text-2xl font-extrabold text-center text-amber-700">
-        OUR BEST SELLERS
-      </h2>
-
-      {/* Main Heading */}
-      <h1 className="text-4xl md:text-5xl mb-6 font-extrabold text-center mt-2">
-        Our Most Loved Coffee
-      </h1>
-
-      {/* Cards Container */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-
-        {/* Card 1 */}
-        <div className="bg-white rounded-3xl shadow-lg p-6 hover:scale-105 hover:shadow-2xl hover:shadow-amber-200 transition-all duration-300">
-
-          <img
-            src={espresso}
-            alt="Espresso"
-            className="w-full h-60 object-cover rounded-2xl"
-          />
-
-          <h2 className="text-2xl font-bold mt-5">
-            Espresso
+          <h2 className="text-4xl font-extrabold  sm:text-4xl">
+            Our Best Sellers
           </h2>
 
-          <p className="text-amber-700 mt-2">
-            A rich and bold espresso made from freshly roasted premium coffee beans.
+          <p
+            className={`mx-auto mt-4 text-2xl max-w-2xl ${
+              darkMode ? "text-gray-300" : "text-gray-600"
+            }`}
+          >
+            Discover some of the most loved coffee choices from
+            Mattie's Coffee.
           </p>
-
-          <div className="flex gap-3 mt-4 text-amber-300 text-xl">
-                 <FaStar />
-                 <FaStar />
-                 <FaStar />
-                 <FaStar />
-                 <FaRegStar />
-          </div>
-
-          <p className="font-extrabold mt-2 mb-3 text-xl">
-            Price - ₹199
-          </p>
-
-<button
-  type="button"
-  onClick={() => alert("Your coffee has been added to the order! ☕")}
-  className="mt-5 w-full bg-amber-700 text-white py-3 rounded-full hover:bg-amber-800 active:scale-95 transition-all duration-300"
->
-  Order Now
-</button>
-
         </div>
 
-        {/* Card 2 */}
-        <div className="rounded-3xl shadow-lg p-6 hover:scale-105 hover:shadow-2xl hover:shadow-amber-950 transition-all duration-300">
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {coffees.map((coffee) => (
+            <article
+              key={coffee.name}
+              className={`overflow-hidden rounded-3xl border shadow-lg transition-all duration-300 hover:-translate-y-2 ${
+                darkMode
+                  ? "border-gray-700 bg-gray-800 shadow-black/30"
+                  : "border-amber-100 bg-amber-50 shadow-amber-900/10"
+              }`}
+            >
+              <img
+                src={coffee.image}
+                alt={coffee.name}
+                className="h-64 w-full object-cover"
+              />
 
-          <img
-            src={cappuccino}
-            alt="Cappuccino"
-            className="w-full h-60 object-cover rounded-2xl"
-          />
+              <div className="p-6">
+                <div className="mb-3 flex items-center justify-between gap-4">
+                  <h3 className="text-2xl font-bold">
+                   Caramel Latte
+                  </h3>
 
-          <h2 className="text-2xl font-bold mt-5">
-            Cappuccino
-          </h2>
+                  <span
+                    className={`font-bold ${
+                      darkMode ? "text-amber-400" : "text-amber-700"
+                    }`}
+                  >
+                    {coffee.price}
+                  </span>
+                </div>
 
-          <p className="text-amber-700 mt-2">
-            A smooth and creamy cappuccino topped with rich milk foam.
-          </p>
+                <p
+                  className={`mb-6 leading-7 ${
+                    darkMode ? "text-gray-300" : "text-gray-600"
+                  }`}
+                >
+                  {coffee.description}
+                </p>
 
-          <div className="flex gap-3 mt-4 text-amber-300 text-xl">
-                 <FaStar />
-                 <FaStar />
-                 <FaStar />
-                 <FaStar />
-                 <FaRegStar />
-        
-          </div>
-
-          <p className="font-extrabold mt-2 mb-3 text-xl">
-            Price - ₹249
-          </p>
-
-<button
-  type="button"
-  onClick={() => alert("Your coffee has been added to the order! ☕")}
-  className="mt-5 w-full bg-amber-700 text-white py-3 rounded-full hover:bg-amber-800 active:scale-95 transition-all duration-300"
->
-  Order Now
-</button>
-
+                <button
+                  type="button"
+                  className="w-full rounded-full bg-amber-700 py-3 font-semibold text-white transition hover:bg-amber-600 active:scale-95"
+                >
+                  Add to Order
+                </button>
+              </div>
+            </article>
+          ))}
         </div>
-
-        {/* Card 3*/}
-
-        <div className="bg-white rounded-3xl shadow-lg p-6 hover:scale-105 hover:shadow-2xl hover:shadow-amber-200 transitio-all duration-300">
-            <img
-            src={caramel}
-            alt="Caramel Latte"
-            className="w-full h-60 object-cover rounded-2xl"
-            />
-            <h2 className="font-bold text-2xl mt-5">
-                Caramel Latte
-            </h2>
-
-            <p className="text-amber-700 mt-3">
-               A rich, velvety blend of bold espresso, creamy steamed milk, and a sweet, buttery ribbon of caramel. 
-            </p>
-            
-            <div className="flex gap-2 mt-4 text-2xl text-amber-300">
-                 <FaStar />
-                 <FaStar />
-                 <FaStar />
-                 <FaStar />
-                 <FaRegStar/>
-
-            </div>
-
-            <p className="font-extrabold mt-2 mb-3 text-xl">
-                Price - ₹299
-            </p>
-
-<button
-  type="button"
-  onClick={() => alert("Your coffee has been added to the order! ☕")}
-  className="mt-5 w-full bg-amber-700 text-white py-3 rounded-full hover:bg-amber-800 active:scale-95 transition-all duration-300"
->
-  Order Now
-</button>
-        
-
-        </div>
-
       </div>
-
     </section>
   );
 }

@@ -1,113 +1,116 @@
-import { FaUserCircle, FaStar } from "react-icons/fa";
-function Testimonials(){
-return(
-<section className="px-10 md:px-12 py-16 bg-amber-50">
-        {/*Small Heading*/}
-        <h2 className="text-center text-2xl md:text-2xl font-bold text-amber-700">
-             TESTIMONIALS
-        </h2>
-       {/*Main Heading*/}
-<h1 className="text-center text-3xl md:text-5xl font-extrabold  mb-12">
-    What Our Customers Say
-</h1>
+import {
+  FaUserCircle,
+  FaStar,
+} from "react-icons/fa";
 
-        {/*Card Container*/}   
+function Testimonials({ darkMode }) {
+  const testimonials = [
+    {
+      name: "Emma Johnson",
+      role: "Coffee Lover",
+      review:
+        "Mattie's Coffee has become my favourite place for fresh and delicious coffee. The service is always warm and welcoming.",
+    },
+    {
+      name: "Daniel Smith",
+      role: "Regular Customer",
+      review:
+        "The coffee quality is amazing, and every order arrives fresh. I especially love their cappuccino and espresso.",
+    },
+    {
+      name: "Charlotte Baker",
+      role: "Frequent Customer",
+      review:
+        "Incredible selection and lightning-fast delivery! The website is easy to use, and the coffee arrives perfectly fresh every time.",
+    },
+  ];
 
-<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/*Card-1 */}
+  return (
+    <section
+      id="testimonials"
+      className={`px-5 py-20 transition-colors duration-500 sm:px-8 md:px-12 lg:px-20 ${
+        darkMode
+          ? "bg-gray-900 text-white"
+          : "bg-white text-gray-900"
+      }`}
+    >
+      <div className="mx-auto max-w-7xl">
+        {/* Section Heading */}
+        <div className="mb-12 text-center">
+          <p
+            className={`mb-3 font-semibold uppercase tracking-[0.2em] ${
+              darkMode ? "text-amber-400" : "text-amber-700"
+            }`}
+          >
+            Customer Reviews
+          </p>
 
-            <div className="flex flex-col items-center text-center bg-white rounded-3xl shadow-lg py-9 px-6 hover:scale-105 hover:-translate-y-px hover:shadow-amber-700 transition-all duration-300">
-                <FaUserCircle className="text-5xl w-20 h-22 text-amber-700 mx-auto"/>
+          <h2 className="text-3xl font-bold sm:text-4xl">
+            What Our Customers Say
+          </h2>
 
-                <h2 className="mt-2">
-                    Emma Watson
-                </h2>  
-
-            <p className="font-bold mx-auto mt-4 mb-4 text-gray-500">
-                Regular Customer
-            </p>
-
-            
-            <p className="flex gap-2 text-2xl hover:scale-110 transition-transform duration-300 items-center mb-4 text-amber-300 mx-auto">
-                <FaStar />
-                <FaStar />
-                <FaStar />
-                <FaStar />
-                <FaStar />
-            </p>  
-
-            <p className="text-amber-500">
-              Loved by coffee lovers for our fresh brews,
-              warm  atmosphere, and exceptional service.  
-            </p>
-            
-            </div>
-
-           {/*Card-2*/}
-            <div className="flex flex-col items-center text-center bg-white rounded-3xl shadow-lg py-9 px-6 hover:scale-105 hover:-translate-y-px hover:shadow-amber-700 transition-all duration-300">
-                <FaUserCircle className="text-5xl w-20 h-22 text-amber-700 mx-auto"/>
-
-                <h2 className="mt-2">
-                    Oliver Hughes 
-                </h2>  
-
-            <p className="font-bold mx-auto mt-4 mb-4 text-gray-500">
-               Frequent Customer
-            </p>
-
-            
-            <p className="flex gap-2 text-2xl hover:scale-110 transition-transform duration-300 items-center mb-4 text-amber-300 mx-auto">
-                <FaStar />
-                <FaStar />
-                <FaStar />
-                <FaStar />
-                <FaStar />
-            </p>  
-
-            <p className="text-amber-500">
-           Hands down the freshest coffee I've ever ordered online! The rich flavor and smooth finish make my morning routine so much better.
-            </p>
-            
-            </div>
-
-            {/*Card-3 */}
-            <div className="flex flex-col items-center text-center bg-white rounded-3xl shadow-lg py-9 px-6 hover:scale-105 hover:-translate-y-px hover:shadow-amber-700 transition-all duration-300">
-                <FaUserCircle className="text-5xl w-20 h-22 text-amber-700 mx-auto"/>
-
-                <h2 className="mt-2">
-                    Charlotte Baker
-                </h2>  
-
-            <p className="font-bold mx-auto mt-4 mb-4 text-gray-500">
-                Freqeunt Customer
-            </p>
-
-            
-            <p className="flex gap-2 text-2xl hover:scale-110 transition-transform duration-300 items-center mb-4 text-amber-300 mx-auto">
-                <FaStar />
-                <FaStar />
-                <FaStar />
-                <FaStar />
-                <FaStar />
-            </p>  
-             <p className="text-amber-500">
-                Incredible selection and lightning-fast delivery! The website is so easy to use, and the coffee arrives perfectly fresh every single time
-            </p>
-            
-            </div>
-
-
-
-
-
-
+          <p
+            className={`mx-auto mt-4 max-w-2xl leading-7 ${
+              darkMode ? "text-gray-300" : "text-gray-600"
+            }`}
+          >
+            Read what our customers think about their experience with
+            Mattie&apos;s Coffee.
+          </p>
         </div>
 
+        {/* Testimonial Cards */}
+        <div className="grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
+          {testimonials.map((testimonial) => (
+            <article
+              key={testimonial.name}
+              className={`flex h-full flex-col items-center rounded-3xl border p-7 text-center shadow-lg transition-all duration-300 hover:-translate-y-2 ${
+                darkMode
+                  ? "border-gray-700 bg-gray-800 shadow-black/30"
+                  : "border-amber-100 bg-amber-50 shadow-amber-900/10"
+              }`}
+            >
+              <FaUserCircle
+                className={`mb-4 text-6xl ${
+                  darkMode ? "text-amber-400" : "text-amber-700"
+                }`}
+              />
+
+              <h3 className="text-lg font-bold">
+                {testimonial.name}
+              </h3>
+
+              <p
+                className={`mt-1 text-sm ${
+                  darkMode ? "text-gray-400" : "text-gray-600"
+                }`}
+              >
+                {testimonial.role}
+              </p>
+
+              {/* Five Stars */}
+              <div
+                className="my-5 flex gap-1 text-xl text-yellow-400"
+                aria-label="5 out of 5 stars"
+              >
+                {[1, 2, 3, 4, 5].map((star) => (
+                  <FaStar key={star} />
+                ))}
+              </div>
+
+              <p
+                className={`leading-7 ${
+                  darkMode ? "text-gray-300" : "text-gray-700"
+                }`}
+              >
+                “{testimonial.review}”
+              </p>
+            </article>
+          ))}
+        </div>
+      </div>
     </section>
-
-
-
- );
+  );
 }
 
 export default Testimonials;

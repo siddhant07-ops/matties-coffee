@@ -1,73 +1,98 @@
 import { useState } from "react";
 
-function Newsletter() {
+function Newsletter({ darkMode }) {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-  const [isError, setIsError] = useState(false);
 
-  const handleSubscribe = () => {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
     if (email.trim() === "") {
-      setIsError(true);
-      setMessage("❌ Please enter your email.");
+      setMessage("Please enter your email address!");
       return;
     }
 
-    setIsError(false);
-    setMessage("✅ Thanks for subscribing to Mattie's Coffee! ☕");
+    setMessage("Thank you for subscribing!");
+
     setEmail("");
   };
 
   return (
-    <section className="px-6 md:px-12 py-16 bg-amber-50">
-      {/* Small Heading */}
-    <div className="bg-amber-100 rounded-3xl shadow-lg p-6 hover:scale-105 hover:shadow-amber-300 transition duration-500">
-      <h3 className="text-center text-amber-700 rounded-3xl gap-16  font-extrabold text-3xl">
-        NEWSLETTER📰
-      </h3>
-
-      {/* Main Heading */}
-      <h1 className="text-center text-4xl font-extrabold mt-3">
-        Stay Updated With Mattie's Coffee
-      </h1>
-
-      {/* Paragraph */}
-      <p className="text-center text-gray-700 mt-4">
-        Subscribe to receive the latest coffee offers, discounts,
-        <br />
-        and exciting updates directly in your inbox.
-      </p>
-
-      {/* Input & Button */}
-
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8 max-w-4xl mx-auto">
-              <input
-              type="email"
-              placeholder="Enter Your Email..."
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="w-full sm:w-[500px] md:w-[650px] px-6 py-4 rounded-full border-2 border-amber-700 outline-none focus:ring-2 focus:ring-amber-500"
-                         />
-
-              <button
-                type="button"
-                onClick={handleSubscribe}
-                className="w-full sm:w-auto px-8 py-4 rounded-full bg-amber-700 text-white hover:bg-amber-800 active:scale-95 transition-all duration-300"
-              >
-                Subscribe
-              </button>
-            </div>
-    </div>
-
-      {/* Success / Error Message */}
-      {message && (
+    <section
+      id="contact"
+      className={`px-6 py-20 transition-colors duration-500 md:px-12 lg:px-20 ${
+        darkMode
+          ? "bg-gray-950 text-white"
+          : "bg-amber-50 text-gray-900"
+      }`}
+    >
+      <div
+        className={`mx-auto max-w-4xl rounded-3xl border p-8 text-center shadow-xl sm:p-12 ${
+          darkMode
+            ? "border-gray-700 bg-gray-800 shadow-black/30"
+            : "border-amber-100 bg-white shadow-amber-900/10"
+        }`}
+      >
         <p
-          className={`mt-5 text-center font-semibold ${
-            isError ? "text-red-600" : "text-green-600"
+          className={`mb-3 font-semibold uppercase tracking-widest ${
+            darkMode ? "text-amber-400" : "text-amber-700"
           }`}
         >
-          {message}
+          Stay Connected
         </p>
-      )}
+
+        <h2 className="text-3xl font-bold sm:text-4xl">
+          Join Our Coffee Community
+        </h2>
+
+        <p
+          className={`mx-auto mt-4 max-w-2xl leading-7 ${
+            darkMode ? "text-gray-300" : "text-gray-600"
+          }`}
+        >
+          Subscribe to receive new menu updates, special offers and coffee
+          news. On Time!
+        </p>
+
+        <form
+          onSubmit={handleSubmit}
+          className="mx-auto mt-8 flex max-w-2xl flex-col gap-3 sm:flex-row"
+        >
+          <input
+            type="email"
+            value={email}
+            onChange={(event) => {
+              setEmail(event.target.value);
+              setMessage("");
+            }}
+            placeholder="Enter your email address"
+            className={`min-w-0 flex-1 rounded-full border px-6 py-3 outline-none transition focus:border-amber-600 focus:ring-2 focus:ring-amber-600/30 ${
+              darkMode
+                ? "border-gray-600 bg-gray-900 text-white placeholder:text-gray-400"
+                : "border-amber-200 bg-amber-50 text-gray-900 placeholder:text-gray-500"
+            }`}
+          />
+
+          <button
+            type="submit"
+            className="rounded-full bg-amber-700 px-7 py-3 font-semibold text-white transition hover:bg-amber-600 active:scale-95"
+          >
+            Subscribe
+          </button>
+        </form>
+
+        {message && (
+          <p
+            className={`mt-4 font-semibold ${
+              message.includes("Thank you")
+                ? "text-green-500"
+                : "text-red-500"
+            }`}
+          >
+            {message}
+          </p>
+        )}
+      </div>
     </section>
   );
 }
