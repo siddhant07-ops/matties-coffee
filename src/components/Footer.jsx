@@ -71,7 +71,7 @@ function Footer({ darkMode }) {
 
             <div className="space-y-4">
               <a
-                href="tel:+919876543210"
+                href="tel:+91 6359107838"
                 className={`flex items-center justify-center gap-3 transition hover:text-amber-600 md:justify-start ${
                   darkMode ? "text-gray-300" : "text-gray-700"
                 }`}
