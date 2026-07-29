@@ -12,6 +12,7 @@ import Footer from "./components/Footer";
 import Loading from "./components/Loading";
 import BackToTop from "./components/BackToTop";
 import Cart from "./components/Cart";
+import FakePaymentGateway from "./components/FakePaymentGateway";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -52,6 +53,7 @@ function App() {
       <Footer darkMode={darkMode}/>
       <BackToTop darkMode={darkMode}/>
       <Cart darkMode={darkMode}/>
+      <FakePaymentGateway darkmode={darkmode}/>
     </div>
   );
 }
