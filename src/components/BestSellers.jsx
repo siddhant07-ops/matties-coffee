@@ -1,111 +1,109 @@
 import espresso from "../assets/espresso.jpg";
 import cappuccino from "../assets/cappuccino.jpg";
-import caramellatte from "../assets/caramel latte.jpg";
+import caramel from "../assets/caramel latte.jpg";
+
+import { FaStar, FaRegStar } from "react-icons/fa";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../features/cart/cartSlice";
 
 function BestSellers({ darkMode }) {
+  const dispatch = useDispatch();
+
   const coffees = [
     {
+      id: 1,
       name: "Espresso",
+      description:
+        "A rich and bold espresso made from freshly roasted premium coffee beans.",
+      price: 199,
       image: espresso,
-      description: "Strong, rich and full of bold coffee flavour.",
-      price: "₹199",
     },
     {
+      id: 2,
       name: "Cappuccino",
+      description:
+        "A smooth and creamy cappuccino topped with rich milk foam.",
+      price: 249,
       image: cappuccino,
-      description: "Smooth espresso topped with creamy milk foam.",
-      price: "₹249",
     },
     {
+      id: 3,
       name: "Caramel Latte",
-      image: caramellatte,
-      description: "A soft and creamy latte with a sweet caramel flavour.",
-      price: "₹279",
+      description:
+        "A velvety blend of espresso, steamed milk and sweet caramel.",
+      price: 299,
+      image: caramel,
     },
   ];
+
+  const handleAddToCart = (coffee) => {
+    dispatch(addToCart(coffee));
+  };
 
   return (
     <section
       id="menu"
-      className={`px-6 py-20 transition-colors duration-500 md:px-12 lg:px-20 ${
+      className={`px-6 py-20 transition-colors duration-500 md:px-12 ${
         darkMode
-          ? "bg-gray-900 text-white"
-          : "bg-white text-gray-900"
+          ? "bg-gray-950 text-white"
+          : "bg-amber-50 text-black"
       }`}
     >
-      <div className="mx-auto max-w-7xl">
-        <div className="mb-12 text-center">
-          <p
-            className={`mb-3 font-semibold uppercase tracking-widest ${
-              darkMode ? "text-amber-400" : "text-amber-700"
+      <h2 className="mb-4 text-center text-2xl font-extrabold text-amber-700 md:text-3xl">
+        OUR BEST SELLERS
+      </h2>
+
+      <h1 className="mb-12 text-center text-3xl font-extrabold md:text-4xl">
+        Our Most Loved Coffee
+      </h1>
+
+      <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        {coffees.map((coffee) => (
+          <article
+            key={coffee.id}
+            className={`flex flex-col rounded-3xl p-6 shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl ${
+              darkMode ? "bg-gray-800" : "bg-white"
             }`}
           >
-            Customer Favourites
-          </p>
+            <img
+              src={coffee.image}
+              alt={coffee.name}
+              className="h-60 w-full rounded-2xl object-cover"
+            />
 
-          <h2 className="text-3xl font-bold sm:text-4xl">
-            Our Best Sellers
-          </h2>
+            <h2 className="mt-5 text-2xl font-bold">
+              {coffee.name}
+            </h2>
 
-          <p
-            className={`mx-auto mt-4 max-w-2xl ${
-              darkMode ? "text-gray-300" : "text-gray-600"
-            }`}
-          >
-            Discover some of the most loved coffee choices from
-            Mattie&apos;s Coffee.
-          </p>
-        </div>
-
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {coffees.map((coffee) => (
-            <article
-              key={coffee.name}
-              className={`overflow-hidden rounded-3xl border shadow-lg transition-all duration-300 hover:-translate-y-2 ${
-                darkMode
-                  ? "border-gray-700 bg-gray-800 shadow-black/30"
-                  : "border-amber-100 bg-amber-50 shadow-amber-900/10"
+            <p
+              className={`mt-2 flex-1 ${
+                darkMode ? "text-gray-300" : "text-amber-700"
               }`}
             >
-              <img
-                src={coffee.image}
-                alt={coffee.name}
-                className="h-64 w-full object-cover"
-              />
+              {coffee.description}
+            </p>
 
-              <div className="p-6">
-                <div className="mb-3 flex items-center justify-between gap-4">
-                  <h3 className="text-2xl font-bold">
-                    {coffee.name}
-                  </h3>
+            <div className="mt-4 flex gap-2 text-xl text-amber-400">
+              <FaStar />
+              <FaStar />
+              <FaStar />
+              <FaStar />
+              <FaRegStar />
+            </div>
 
-                  <span
-                    className={`font-bold ${
-                      darkMode ? "text-amber-400" : "text-amber-700"
-                    }`}
-                  >
-                    {coffee.price}
-                  </span>
-                </div>
+            <p className="mt-3 text-xl font-extrabold">
+              ₹{coffee.price}
+            </p>
 
-                <p
-                  className={`mb-6 leading-7 ${
-                    darkMode ? "text-gray-300" : "text-gray-600"
-                  }`}
-                >
-                  {coffee.description}
-                </p>
-
-                <button
-                  type="button"
-                  className="w-full rounded-full bg-amber-700 py-3 font-semibold text-white transition hover:bg-amber-600 active:scale-95"
-                >
-                  Add to Order
-                </button>
-              </div>
-            </article>
-          ))}
-        </div>
+            <button
+              type="button"
+              onClick={() => handleAddToCart(coffee)}
+              className="mt-5 w-full rounded-full bg-amber-700 py-3 text-white transition-all duration-300 hover:bg-amber-800 active:scale-95"
+            >
+              Add to Cart
+            </button>
+          </article>
+        ))}
       </div>
     </section>
   );

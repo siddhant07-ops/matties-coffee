@@ -1,15 +1,39 @@
 import mattie from "../assets/mattie.jpg";
 import { useState } from "react";
-import { FaBars, FaTimes, FaMoon, FaSun } from "react-icons/fa";
+
+import {
+  FaBars,
+  FaTimes,
+  FaMoon,
+  FaSun,
+  FaShoppingCart,
+} from "react-icons/fa";
+
+import { useDispatch, useSelector } from "react-redux";
+import { openCart } from "../features/cart/cartSlice";
 
 function Navbar({ darkMode, setDarkMode }) {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const dispatch = useDispatch();
+
+  const cartItems = useSelector((state) => state.cart.items);
+
+  const totalCartItems = cartItems.reduce(
+    (total, item) => total + item.quantity,
+    0
+  );
 
   const scrollToSection = (id) => {
     document.getElementById(id)?.scrollIntoView({
       behavior: "smooth",
     });
 
+    setMenuOpen(false);
+  };
+
+  const handleOpenCart = () => {
+    dispatch(openCart());
     setMenuOpen(false);
   };
 
@@ -22,26 +46,26 @@ function Navbar({ darkMode, setDarkMode }) {
       }`}
     >
       {/* Top Navbar */}
-      <div className="flex w-full items-center justify-between gap-4">
+      <div className="flex w-full items-center justify-between gap-3">
         {/* Logo */}
         <button
           type="button"
           onClick={() => scrollToSection("home")}
-          className="flex min-w-0 shrink-0 items-center gap-3"
+          className="flex min-w-0 items-center gap-2 sm:gap-3"
         >
           <img
             src={mattie}
             alt="Mattie's Coffee Logo"
-            className="h-16 w-16 rounded-full shadow-lg sm:h-16 sm:w-16 lg:h-20 lg:w-20"
+            className="h-16 w-16 shrink-0 rounded-full shadow-lg lg:h-20 lg:w-20"
           />
 
-          <h1 className="whitespace-nowrap text-xl font-bold leading-none text-amber-700 sm:text-2xl lg:text-3xl">
+          <h1 className="truncate text-xl font-bold leading-none text-amber-700 sm:text-2xl lg:text-3xl">
             Mattie's Coffee
           </h1>
         </button>
 
-        {/* Laptop/Desktop Navigation */}
-        <div className="hidden items-center gap-5 p-4 text-center font-semibold xl:flex">
+        {/* Desktop Navigation */}
+        <div className="hidden items-center gap-5 font-semibold xl:flex">
           <button
             type="button"
             onClick={() => scrollToSection("home")}
@@ -83,9 +107,9 @@ function Navbar({ darkMode, setDarkMode }) {
           </button>
         </div>
 
-        {/* Laptop/Desktop Controls */}
-        <div className="hidden shrink-0 items-center gap-2 pl-3 xl:flex">
-          {/* Desktop dark-mode button */}
+        {/* Desktop Controls */}
+        <div className="hidden shrink-0 items-center gap-2 xl:flex">
+          {/* Dark Mode */}
           <button
             type="button"
             onClick={() => setDarkMode(!darkMode)}
@@ -95,28 +119,61 @@ function Navbar({ darkMode, setDarkMode }) {
             {darkMode ? <FaSun /> : <FaMoon />}
           </button>
 
+          {/* Cart */}
+          <button
+            type="button"
+            onClick={handleOpenCart}
+            aria-label="Open shopping cart"
+            className="relative rounded-full border border-amber-700 p-3 text-amber-700 transition-all duration-300 hover:bg-amber-700 hover:text-white active:scale-95"
+          >
+            <FaShoppingCart />
+
+            {totalCartItems > 0 && (
+              <span className="absolute -right-2 -top-2 flex h-6 min-w-6 items-center justify-center rounded-full bg-red-600 px-1 text-xs font-bold text-white">
+                {totalCartItems}
+              </span>
+            )}
+          </button>
+
+          {/* Order Button */}
           <button
             type="button"
             onClick={() => scrollToSection("menu")}
-            className="whitespace-nowrap rounded-full bg-amber-700 px-4 py-2 text-white transition-all duration-300 hover:bg-amber-600 active:scale-95"
+            className="whitespace-nowrap rounded-full bg-amber-700 px-5 py-3 text-white transition-all duration-300 hover:bg-amber-600 active:scale-95"
           >
             Order Now
           </button>
-
         </div>
 
-        {/* Phone and Tablet Controls */}
-        {/* xl:hidden hides these controls on laptop/desktop */}
+        {/* Mobile and Tablet Controls */}
         <div className="flex shrink-0 items-center gap-2 xl:hidden">
+          {/* Dark Mode */}
           <button
             type="button"
             onClick={() => setDarkMode(!darkMode)}
             aria-label="Toggle dark mode"
-            className="rounded-full border border-amber-700 p-3 text-amber-700 transition-all duration-300 hover:bg-amber-700 hover:text-white active:scale-95"
+            className="rounded-full border border-amber-700 p-3 text-amber-700 transition-all duration-300 active:scale-95"
           >
             {darkMode ? <FaSun /> : <FaMoon />}
           </button>
 
+          {/* Cart */}
+          <button
+            type="button"
+            onClick={handleOpenCart}
+            aria-label="Open shopping cart"
+            className="relative rounded-full border border-amber-700 p-3 text-amber-700 transition-all duration-300 active:scale-95"
+          >
+            <FaShoppingCart />
+
+            {totalCartItems > 0 && (
+              <span className="absolute -right-2 -top-2 flex h-6 min-w-6 items-center justify-center rounded-full bg-red-600 px-1 text-xs font-bold text-white">
+                {totalCartItems}
+              </span>
+            )}
+          </button>
+
+          {/* Hamburger */}
           <button
             type="button"
             aria-label="Toggle navigation menu"
@@ -128,7 +185,7 @@ function Navbar({ darkMode, setDarkMode }) {
         </div>
       </div>
 
-      {/* Phone and Tablet Menu */}
+      {/* Mobile and Tablet Dropdown */}
       <div
         className={`overflow-hidden transition-all duration-500 ease-in-out xl:hidden ${
           menuOpen
@@ -146,7 +203,7 @@ function Navbar({ darkMode, setDarkMode }) {
           <button
             type="button"
             onClick={() => scrollToSection("home")}
-            className="font-semibold hover:text-amber-700"
+            className="font-semibold transition hover:text-amber-700"
           >
             Home
           </button>
@@ -154,7 +211,7 @@ function Navbar({ darkMode, setDarkMode }) {
           <button
             type="button"
             onClick={() => scrollToSection("menu")}
-            className="font-semibold hover:text-amber-700"
+            className="font-semibold transition hover:text-amber-700"
           >
             Menu
           </button>
@@ -162,7 +219,7 @@ function Navbar({ darkMode, setDarkMode }) {
           <button
             type="button"
             onClick={() => scrollToSection("store")}
-            className="font-semibold hover:text-amber-700"
+            className="font-semibold transition hover:text-amber-700"
           >
             Our Store
           </button>
@@ -170,7 +227,7 @@ function Navbar({ darkMode, setDarkMode }) {
           <button
             type="button"
             onClick={() => scrollToSection("shop")}
-            className="font-semibold hover:text-amber-700"
+            className="font-semibold transition hover:text-amber-700"
           >
             Shop
           </button>
@@ -178,7 +235,7 @@ function Navbar({ darkMode, setDarkMode }) {
           <button
             type="button"
             onClick={() => scrollToSection("contact")}
-            className="font-semibold hover:text-amber-700"
+            className="font-semibold transition hover:text-amber-700"
           >
             Contact
           </button>
@@ -191,6 +248,21 @@ function Navbar({ darkMode, setDarkMode }) {
             Order Now
           </button>
 
+          <button
+            type="button"
+            onClick={handleOpenCart}
+            className="flex w-full items-center justify-center gap-3 rounded-full border border-amber-700 py-3 text-amber-700 transition-all duration-300 hover:bg-amber-700 hover:text-white active:scale-95"
+          >
+            <FaShoppingCart />
+
+            View Cart
+
+            {totalCartItems > 0 && (
+              <span className="rounded-full bg-red-600 px-2 py-1 text-xs font-bold text-white">
+                {totalCartItems}
+              </span>
+            )}
+          </button>
         </div>
       </div>
     </nav>
