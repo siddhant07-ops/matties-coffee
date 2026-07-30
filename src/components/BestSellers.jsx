@@ -4,7 +4,7 @@ import caramel from "../assets/caramel latte.jpg";
 
 import { FaStar, FaRegStar } from "react-icons/fa";
 import { useDispatch } from "react-redux";
-import { addToCart } from "../features/cart/cartSlice";
+import { addToCart } from "../features/cart/CartSlice";
 
 function BestSellers({ darkMode }) {
   const dispatch = useDispatch();

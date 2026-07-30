@@ -15,7 +15,7 @@ import {
   decreaseQuantity,
   increaseQuantity,
   removeFromCart,
-} from "../features/cart/cartSlice";
+} from "../features/cart/CartSlice";
 
 import FakePaymentGateway from "./FakePaymentGateway";
 
