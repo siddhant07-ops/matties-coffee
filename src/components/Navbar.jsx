@@ -10,7 +10,7 @@ import {
 } from "react-icons/fa";
 
 import { useDispatch, useSelector } from "react-redux";
-import { openCart } from "../features/cart/CartSlice";
+import { openCart } from "../features/cart/cartSlice";
 
 function Navbar({ darkMode, setDarkMode }) {
   const [menuOpen, setMenuOpen] = useState(false);
