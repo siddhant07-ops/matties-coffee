@@ -1,5 +1,6 @@
 import mattie from "../assets/mattie.jpg";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import {
   FaBars,
@@ -11,11 +12,15 @@ import {
 
 import { useDispatch, useSelector } from "react-redux";
 import { openCart } from "../features/cart/cartSlice";
+import { useAuth } from "../context/AuthContext";
 
 function Navbar({ darkMode, setDarkMode }) {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const { user, isLoggedIn, logout } = useAuth();
 
   const cartItems = useSelector((state) => state.cart.items);
 
@@ -35,6 +40,27 @@ function Navbar({ darkMode, setDarkMode }) {
   const handleOpenCart = () => {
     dispatch(openCart());
     setMenuOpen(false);
+  };
+
+  const handleLogout = () => {
+    logout();
+    setMenuOpen(false);
+    navigate("/");
+  };
+
+  const handleLogin = () => {
+    setMenuOpen(false);
+    navigate("/login");
+  };
+
+  const handleRegister = () => {
+    setMenuOpen(false);
+    navigate("/register");
+  };
+
+  const handleMyOrders = () => {
+    setMenuOpen(false);
+    navigate("/my-orders");
   };
 
   return (
@@ -109,6 +135,49 @@ function Navbar({ darkMode, setDarkMode }) {
 
         {/* Desktop Controls */}
         <div className="hidden shrink-0 items-center gap-2 xl:flex">
+          {/* Authentication */}
+          {!isLoggedIn ? (
+            <>
+              <button
+                type="button"
+                onClick={handleLogin}
+                className="whitespace-nowrap rounded-full border border-amber-700 px-4 py-2 font-semibold text-amber-700 transition hover:bg-amber-700 hover:text-white"
+              >
+                Login
+              </button>
+
+              <button
+                type="button"
+                onClick={handleRegister}
+                className="whitespace-nowrap rounded-full bg-amber-700 px-4 py-2 font-semibold text-white transition hover:bg-amber-600"
+              >
+                Register
+              </button>
+            </>
+          ) : (
+            <>
+              <span className="whitespace-nowrap font-semibold text-amber-700">
+                Hi, {user?.name || "Customer"}
+              </span>
+
+              <button
+                type="button"
+                onClick={handleMyOrders}
+                className="whitespace-nowrap rounded-full border border-amber-700 px-4 py-2 font-semibold text-amber-700 transition hover:bg-amber-700 hover:text-white"
+              >
+                My Orders
+              </button>
+
+              <button
+                type="button"
+                onClick={handleLogout}
+                className="whitespace-nowrap rounded-full bg-red-600 px-4 py-2 font-semibold text-white transition hover:bg-red-700"
+              >
+                Logout
+              </button>
+            </>
+          )}
+
           {/* Dark Mode */}
           <button
             type="button"
@@ -189,7 +258,7 @@ function Navbar({ darkMode, setDarkMode }) {
       <div
         className={`overflow-hidden transition-all duration-500 ease-in-out xl:hidden ${
           menuOpen
-            ? "mt-4 max-h-[750px] opacity-100"
+            ? "mt-4 max-h-[900px] opacity-100"
             : "max-h-0 opacity-0"
         }`}
       >
@@ -239,6 +308,49 @@ function Navbar({ darkMode, setDarkMode }) {
           >
             Contact
           </button>
+
+          {/* Mobile Authentication */}
+          {!isLoggedIn ? (
+            <>
+              <button
+                type="button"
+                onClick={handleLogin}
+                className="w-full rounded-full border border-amber-700 py-3 font-semibold text-amber-700 transition hover:bg-amber-700 hover:text-white"
+              >
+                Login
+              </button>
+
+              <button
+                type="button"
+                onClick={handleRegister}
+                className="w-full rounded-full bg-amber-700 py-3 font-semibold text-white transition hover:bg-amber-600"
+              >
+                Register
+              </button>
+            </>
+          ) : (
+            <>
+              <p className="font-semibold text-amber-700">
+                Hi, {user?.name || "Customer"}
+              </p>
+
+              <button
+                type="button"
+                onClick={handleMyOrders}
+                className="w-full rounded-full border border-amber-700 py-3 font-semibold text-amber-700 transition hover:bg-amber-700 hover:text-white"
+              >
+                My Orders
+              </button>
+
+              <button
+                type="button"
+                onClick={handleLogout}
+                className="w-full rounded-full bg-red-600 py-3 font-semibold text-white transition hover:bg-red-700"
+              >
+                Logout
+              </button>
+            </>
+          )}
 
           <button
             type="button"

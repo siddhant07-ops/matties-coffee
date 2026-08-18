@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Routes, Route } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
@@ -12,22 +13,14 @@ import Footer from "./components/Footer";
 import Loading from "./components/Loading";
 import BackToTop from "./components/BackToTop";
 import Cart from "./components/Cart";
-function App() {
-  const [loading, setLoading] = useState(true);
-  const [darkMode, setDarkMode] = useState(false);
+import Login from "./components/Login";
+import Register from "./components/Register";
+import MyOrders from "./components/MyOrders";
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 2000);
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  if (loading) {
-    return <Loading />;
-  }
-
+function HomePage({
+  darkMode,
+  setDarkMode,
+}) {
   return (
     <div
       className={
@@ -41,17 +34,67 @@ function App() {
         setDarkMode={setDarkMode}
       />
 
-      <Hero darkMode={darkMode} />     
-      <BestSellers darkMode={darkMode}/>
-      <WhyChooseUs darkMode={darkMode}/>
-      <Testimonials darkMode={darkMode}/>
-      <SpecialOffer darkMode={darkMode}/>
-      <Gallery darkMode={darkMode}/>
-      <Newsletter darkMode={darkMode}/>
-      <Footer darkMode={darkMode}/>
-      <BackToTop darkMode={darkMode}/>
-      <Cart darkMode={darkMode}/>
+      <Hero darkMode={darkMode} />
+      <BestSellers darkMode={darkMode} />
+      <WhyChooseUs darkMode={darkMode} />
+      <Testimonials darkMode={darkMode} />
+      <SpecialOffer darkMode={darkMode} />
+      <Gallery darkMode={darkMode} />
+      <Newsletter darkMode={darkMode} />
+      <Footer darkMode={darkMode} />
+      <BackToTop darkMode={darkMode} />
+      <Cart darkMode={darkMode} />
     </div>
+  );
+}
+
+function App() {
+  const [loading, setLoading] =
+    useState(true);
+
+  const [darkMode, setDarkMode] =
+    useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+
+    return () =>
+      clearTimeout(timer);
+  }, []);
+
+  if (loading) {
+    return <Loading />;
+  }
+
+  return (
+    <Routes>
+      <Route
+        path="/"
+        element={
+          <HomePage
+            darkMode={darkMode}
+            setDarkMode={setDarkMode}
+          />
+        }
+      />
+
+      <Route
+        path="/login"
+        element={<Login />}
+      />
+
+      <Route
+        path="/register"
+        element={<Register />}
+      />
+
+      <Route
+        path="/my-orders"
+        element={<MyOrders />}
+      />
+    </Routes>
   );
 }
 

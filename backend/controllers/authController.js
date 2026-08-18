@@ -2,6 +2,9 @@ import User from "../models/User.js";
 import bcrypt from "bcryptjs";
 import generateToken from "../utils/generateToken.js";
 
+// ======================
+// REGISTER USER
+// ======================
 export const registerUser = async (req, res) => {
   try {
     const { name, email, password } = req.body;
@@ -14,7 +17,7 @@ export const registerUser = async (req, res) => {
       });
     }
 
-    // Check whether the email is already registered
+    // Check if email already exists
     const existingUser = await User.findOne({ email });
 
     if (existingUser) {
@@ -24,15 +27,18 @@ export const registerUser = async (req, res) => {
       });
     }
 
-    // Convert the plain password into a secure hash
+    // Hash password
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // Save the new user in MongoDB
+    // Create new user
     const newUser = await User.create({
       name,
       email,
       password: hashedPassword,
     });
+
+    // Generate JWT Token
+    const token = generateToken(newUser._id);
 
     res.status(201).json({
       success: true,
@@ -43,7 +49,7 @@ export const registerUser = async (req, res) => {
         email: newUser.email,
         role: newUser.role,
       },
-        token: generateToken(newUser._id),
+      token,
     });
   } catch (error) {
     res.status(500).json({
@@ -53,6 +59,9 @@ export const registerUser = async (req, res) => {
   }
 };
 
+// ======================
+// LOGIN USER
+// ======================
 export const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -65,7 +74,7 @@ export const loginUser = async (req, res) => {
       });
     }
 
-    // Search for the registered user
+    // Find user by email
     const user = await User.findOne({ email });
 
     if (!user) {
@@ -75,7 +84,7 @@ export const loginUser = async (req, res) => {
       });
     }
 
-    // Compare the entered password with the stored hash
+    // Compare password with hashed password
     const isPasswordCorrect = await bcrypt.compare(
       password,
       user.password
@@ -88,6 +97,9 @@ export const loginUser = async (req, res) => {
       });
     }
 
+    // Generate JWT Token
+    const token = generateToken(user._id);
+
     res.status(200).json({
       success: true,
       message: "Login successful!",
@@ -97,7 +109,7 @@ export const loginUser = async (req, res) => {
         email: user.email,
         role: user.role,
       },
-      token: generateToken(user._id),
+      token,
     });
   } catch (error) {
     res.status(500).json({
@@ -105,4 +117,15 @@ export const loginUser = async (req, res) => {
       message: error.message,
     });
   }
-}; 
+};
+
+// ======================
+// GET LOGGED-IN USER PROFILE
+// ======================
+export const getProfile = async (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: "Protected route accessed successfully!",
+    user: req.user,
+  });
+};
