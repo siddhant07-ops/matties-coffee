@@ -48,7 +48,7 @@ const startServer = async () => {
 
   app.listen(PORT, "0.0.0.0", () => {
     console.log(
-      console.log(`✅ Server is running on port ${PORT}`);
+      `Server is running on port ${PORT}`
     );
   });
 };
