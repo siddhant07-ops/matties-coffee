@@ -16,9 +16,9 @@ app.use(cors());
 
 app.use(express.json());
 
-// =========================================
+// ==============================
 // API ROUTES
-// =========================================
+// ==============================
 
 app.use("/api/auth", authRoutes);
 
@@ -26,31 +26,29 @@ app.use("/api/orders", orderRoutes);
 
 app.use("/api/invoices", invoiceRoutes);
 
-// =========================================
+// ==============================
 // TEST ROUTE
-// =========================================
+// ==============================
 
 app.get("/", (req, res) => {
   res.json({
     success: true,
-    message:
-      "Mattie's Coffee backend is running!",
+    message: "Mattie's Coffee backend is running!",
   });
 });
 
-// =========================================
+// ==============================
 // START SERVER
-// =========================================
+// ==============================
 
-const PORT =
-  process.env.PORT || 5000;
+const PORT = process.env.PORT || 5000;
 
 const startServer = async () => {
   await connectDB();
 
-  app.listen(PORT, () => {
+  app.listen(PORT, "0.0.0.0", () => {
     console.log(
-      `Server is running on http://localhost:${PORT}`
+      `Server is running on port ${PORT}`
     );
   });
 };
