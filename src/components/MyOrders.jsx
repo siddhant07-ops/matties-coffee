@@ -5,9 +5,8 @@ import { apiRequest } from "../api/api";
 import API_BASE_URL from "../api/api";
 import { useAuth } from "../context/AuthContext";
 
-function MyOrders() {
+function MyOrders({ darkMode }) {
   const navigate = useNavigate();
-
   const { isLoggedIn } = useAuth();
 
   const [orders, setOrders] = useState([]);
@@ -87,8 +86,14 @@ function MyOrders() {
 
   if (loading) {
     return (
-      <section className="flex min-h-screen items-center justify-center bg-amber-50">
-        <p className="text-xl font-semibold text-amber-800">
+      <section
+        className={`flex min-h-screen items-center justify-center ${
+          darkMode
+            ? "bg-gray-950 text-white"
+            : "bg-amber-50 text-black"
+        }`}
+      >
+        <p className="text-xl font-semibold text-amber-700">
           Loading your orders...
         </p>
       </section>
@@ -96,15 +101,27 @@ function MyOrders() {
   }
 
   return (
-    <section className="min-h-screen bg-amber-50 px-4 py-10 md:px-8 lg:px-16">
+    <section
+      className={`min-h-screen px-4 py-10 transition-colors duration-500 md:px-8 lg:px-16 ${
+        darkMode
+          ? "bg-gray-950 text-white"
+          : "bg-amber-50 text-black"
+      }`}
+    >
       <div className="mx-auto max-w-6xl">
         <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-amber-800 md:text-4xl">
+            <h1 className="text-3xl font-bold text-amber-700 md:text-4xl">
               My Orders
             </h1>
 
-            <p className="mt-2 text-gray-600">
+            <p
+              className={`mt-2 ${
+                darkMode
+                  ? "text-gray-300"
+                  : "text-gray-600"
+              }`}
+            >
               View your order history, tracking progress,
               totals, and invoices.
             </p>
@@ -126,12 +143,24 @@ function MyOrders() {
         )}
 
         {orders.length === 0 ? (
-          <div className="rounded-3xl bg-white p-10 text-center shadow-lg">
-            <h2 className="text-2xl font-bold text-gray-800">
+          <div
+            className={`rounded-3xl p-10 text-center shadow-lg ${
+              darkMode
+                ? "bg-gray-900"
+                : "bg-white"
+            }`}
+          >
+            <h2 className="text-2xl font-bold">
               No orders yet
             </h2>
 
-            <p className="mt-2 text-gray-600">
+            <p
+              className={`mt-2 ${
+                darkMode
+                  ? "text-gray-300"
+                  : "text-gray-600"
+              }`}
+            >
               Add your favourite coffee to the cart
               and place your first order.
             </p>
@@ -149,25 +178,47 @@ function MyOrders() {
             {orders.map((order) => (
               <div
                 key={order._id}
-                className="rounded-3xl bg-white p-6 shadow-lg"
+                className={`rounded-3xl p-6 shadow-lg ${
+                  darkMode
+                    ? "bg-gray-900"
+                    : "bg-white"
+                }`}
               >
-                <div className="flex flex-col gap-4 border-b border-gray-200 pb-5 md:flex-row md:items-center md:justify-between">
+                <div
+                  className={`flex flex-col gap-4 border-b pb-5 md:flex-row md:items-center md:justify-between ${
+                    darkMode
+                      ? "border-gray-700"
+                      : "border-gray-200"
+                  }`}
+                >
                   <div>
-                    <p className="text-sm text-gray-500">
+                    <p
+                      className={`text-sm ${
+                        darkMode
+                          ? "text-gray-400"
+                          : "text-gray-500"
+                      }`}
+                    >
                       Order ID
                     </p>
 
-                    <p className="break-all font-semibold text-gray-800">
+                    <p className="break-all font-semibold">
                       {order._id}
                     </p>
                   </div>
 
                   <div className="md:text-right">
-                    <p className="text-sm text-gray-500">
+                    <p
+                      className={`text-sm ${
+                        darkMode
+                          ? "text-gray-400"
+                          : "text-gray-500"
+                      }`}
+                    >
                       Order Date
                     </p>
 
-                    <p className="font-semibold text-gray-800">
+                    <p className="font-semibold">
                       {new Date(
                         order.createdAt
                       ).toLocaleString()}
@@ -176,7 +227,7 @@ function MyOrders() {
                 </div>
 
                 <div className="mt-5">
-                  <h2 className="text-xl font-bold text-amber-800">
+                  <h2 className="text-xl font-bold text-amber-700">
                     Items
                   </h2>
 
@@ -184,19 +235,29 @@ function MyOrders() {
                     {order.items.map((item) => (
                       <div
                         key={item._id}
-                        className="flex items-center justify-between rounded-xl bg-amber-50 p-4"
+                        className={`flex items-center justify-between rounded-xl p-4 ${
+                          darkMode
+                            ? "bg-gray-800"
+                            : "bg-amber-50"
+                        }`}
                       >
                         <div>
-                          <p className="font-semibold text-gray-800">
+                          <p className="font-semibold">
                             {item.name}
                           </p>
 
-                          <p className="text-sm text-gray-600">
+                          <p
+                            className={`text-sm ${
+                              darkMode
+                                ? "text-gray-300"
+                                : "text-gray-600"
+                            }`}
+                          >
                             ₹{item.price} × {item.quantity}
                           </p>
                         </div>
 
-                        <p className="font-bold text-amber-800">
+                        <p className="font-bold text-amber-700">
                           ₹
                           {item.price *
                             item.quantity}
@@ -207,22 +268,46 @@ function MyOrders() {
                 </div>
 
                 <div className="mt-6 grid gap-4 md:grid-cols-2">
-                  <div className="rounded-xl bg-gray-50 p-4">
-                    <p className="text-sm text-gray-500">
+                  <div
+                    className={`rounded-xl p-4 ${
+                      darkMode
+                        ? "bg-gray-800"
+                        : "bg-gray-50"
+                    }`}
+                  >
+                    <p
+                      className={`text-sm ${
+                        darkMode
+                          ? "text-gray-400"
+                          : "text-gray-500"
+                      }`}
+                    >
                       Delivery Address
                     </p>
 
-                    <p className="mt-1 font-semibold text-gray-800">
+                    <p className="mt-1 font-semibold">
                       {order.deliveryAddress}
                     </p>
                   </div>
 
-                  <div className="rounded-xl bg-gray-50 p-4">
-                    <p className="text-sm text-gray-500">
+                  <div
+                    className={`rounded-xl p-4 ${
+                      darkMode
+                        ? "bg-gray-800"
+                        : "bg-gray-50"
+                    }`}
+                  >
+                    <p
+                      className={`text-sm ${
+                        darkMode
+                          ? "text-gray-400"
+                          : "text-gray-500"
+                      }`}
+                    >
                       Estimated Delivery
                     </p>
 
-                    <p className="mt-1 font-semibold text-gray-800">
+                    <p className="mt-1 font-semibold">
                       {new Date(
                         order.estimatedDelivery
                       ).toLocaleString()}
@@ -232,7 +317,7 @@ function MyOrders() {
 
                 <div className="mt-6">
                   <div className="mb-2 flex items-center justify-between">
-                    <p className="font-semibold text-gray-800">
+                    <p className="font-semibold">
                       {order.trackingStatus}
                     </p>
 
@@ -241,7 +326,13 @@ function MyOrders() {
                     </p>
                   </div>
 
-                  <div className="h-3 overflow-hidden rounded-full bg-gray-200">
+                  <div
+                    className={`h-3 overflow-hidden rounded-full ${
+                      darkMode
+                        ? "bg-gray-700"
+                        : "bg-gray-200"
+                    }`}
+                  >
                     <div
                       className="h-full rounded-full bg-amber-700 transition-all duration-500"
                       style={{
@@ -251,9 +342,21 @@ function MyOrders() {
                   </div>
                 </div>
 
-                <div className="mt-6 rounded-2xl bg-gray-50 p-5">
+                <div
+                  className={`mt-6 rounded-2xl p-5 ${
+                    darkMode
+                      ? "bg-gray-800"
+                      : "bg-gray-50"
+                  }`}
+                >
                   <div className="space-y-3">
-                    <div className="flex justify-between text-gray-600">
+                    <div
+                      className={`flex justify-between ${
+                        darkMode
+                          ? "text-gray-300"
+                          : "text-gray-600"
+                      }`}
+                    >
                       <span>
                         Subtotal
                       </span>
@@ -265,7 +368,13 @@ function MyOrders() {
                       </span>
                     </div>
 
-                    <div className="flex justify-between text-gray-600">
+                    <div
+                      className={`flex justify-between ${
+                        darkMode
+                          ? "text-gray-300"
+                          : "text-gray-600"
+                      }`}
+                    >
                       <span>
                         Delivery Fee
                       </span>
@@ -276,12 +385,18 @@ function MyOrders() {
                       </span>
                     </div>
 
-                    <div className="flex justify-between border-t border-gray-300 pt-3 text-xl font-extrabold text-gray-900">
+                    <div
+                      className={`flex justify-between border-t pt-3 text-xl font-extrabold ${
+                        darkMode
+                          ? "border-gray-700 text-white"
+                          : "border-gray-300 text-gray-900"
+                      }`}
+                    >
                       <span>
                         Total
                       </span>
 
-                      <span className="text-amber-800">
+                      <span className="text-amber-700">
                         ₹{order.totalAmount}
                       </span>
                     </div>

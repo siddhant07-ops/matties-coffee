@@ -90,10 +90,10 @@ function App() {
         element={<Register />}
       />
 
-      <Route
-        path="/my-orders"
-        element={<MyOrders />}
-      />
+<Route
+  path="/my-orders"
+  element={<MyOrders darkMode={darkMode} />}
+/>
     </Routes>
   );
 }
