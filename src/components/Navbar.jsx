@@ -72,7 +72,7 @@ function Navbar({ darkMode, setDarkMode }) {
       }`}
     >
       {/* Top Navbar */}
-      <div className="flex w-full items-center justify-between gap-3">
+      <div className="flex w-full items-center justify-between gap-2">
         {/* Logo */}
         <button
           type="button"
@@ -91,7 +91,7 @@ function Navbar({ darkMode, setDarkMode }) {
         </button>
 
         {/* Desktop Navigation */}
-        <div className="hidden items-center gap-5 font-semibold xl:flex">
+        <div className="hidden items-center gap-8 font-semibold xl:flex">
           <button
             type="button"
             onClick={() => scrollToSection("home")}
@@ -134,7 +134,7 @@ function Navbar({ darkMode, setDarkMode }) {
         </div>
 
         {/* Desktop Controls */}
-        <div className="hidden shrink-0 items-center gap-2 xl:flex">
+        <div className="hidden shrink-0 items-center gap-4 xl:flex">
           {/* Authentication */}
           {!isLoggedIn ? (
             <>
